@@ -19,11 +19,11 @@ const Song = ({ song, playlists, removeFromPlaylist, inPlaylist }) => {
   }
   return (
     <div className="song">
-      {inPlaylist ? <img src={song.image}></img> : <span></span>}
+      {inPlaylist ? <img src={song.albumOfTrack.coverArt.sources[0].url}></img> : <span></span>}
       <p>{song.name}</p>
-      <p>{song.artist}</p>
-      {inPlaylist ? <p>{song.duration}</p> : <span></span>}
-      {inPlaylist ? (
+      <p>{song.artists.items[0].profile.name}</p>
+      {inPlaylist ? <p>{Math.floor(parseInt(song.duration.totalMilliseconds/60000))}</p> : <span></span>}
+      {/* {inPlaylist ? (
         <button onClick={(song) => removeFromPlaylist(song)}>Remove</button>
       ) : (
         <form onSubmit={(e) => handleSubmit(e)}>
@@ -34,7 +34,7 @@ const Song = ({ song, playlists, removeFromPlaylist, inPlaylist }) => {
           </select>
           <button type="submit">Add</button>
         </form>
-      )}
+      )} */}
     </div>
   )
 }
