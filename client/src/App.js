@@ -13,40 +13,55 @@ function App() {
   const [user, setUser] = useState(null)
 
   const handleLogOut = () => {
-    //Reset all auth related state and clear localStorage
     setUser(null)
     toggleAuthenticated(false)
     localStorage.clear()
   }
-  const checkToken = async () =>{
+  const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
     toggleAuthenticated(true)
   }
   useEffect(() => {
     const token = localStorage.getItem('token')
-    if(token){
+    if (token) {
       checkToken()
     }
-  },[])
+  }, [])
   return (
     <div className="App">
-       <Nav
+      <Nav
         authenticated={authenticated}
         user={user}
         handleLogOut={handleLogOut}
       />
       <main>
-       <Routes>
+        <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<SignIn setUser={setUser} toggleAuthenticated={toggleAuthenticated}/>} />
+          <Route
+            path="/login"
+            element={
+              <SignIn
+                setUser={setUser}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
           <Route path="/register" element={<SignUp />} />
-          <Route path="/dashboard" element={<Dashboard user={user} authenticated={authenticated}/>} />
-          <Route path="/playlist" element={<PlaylistDetails user={user} authenticated={authenticated}/>} />
+          <Route
+            path="/dashboard"
+            element={<Dashboard user={user} authenticated={authenticated} />}
+          />
+          <Route
+            path="/playlist"
+            element={
+              <PlaylistDetails user={user} authenticated={authenticated} />
+            }
+          />
         </Routes>
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
