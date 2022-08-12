@@ -50,7 +50,7 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route
             path="/dashboard"
-            element={<Dashboard user={user} authenticated={authenticated} />}
+            element={<Dashboard user={user} authenticated={authenticated}/>}  
           />
           <Route
             path="/playlist"
