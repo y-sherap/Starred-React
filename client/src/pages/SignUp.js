@@ -30,7 +30,7 @@ const SignUp = () => {
       password: '',
       confirmPassword: ''
     })
-    navigate('/signin')
+    navigate('/login')
   }
 
   return (
@@ -99,7 +99,7 @@ const SignUp = () => {
                 formValues.confirmPassword === formValues.password)
             }
           >
-            Sign In
+            Register
           </button>
         </form>
       </div>
