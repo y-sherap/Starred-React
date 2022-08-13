@@ -29,7 +29,11 @@ const Dashboard = ({user, authenticated}) => {
             <div>
             <Search user = {user}/>
             </div>
-            
+            {playlists.map((playlist,index)=> (
+                <div>
+                <Playlist playlist={playlist} index ={index} isEdit ={playlist.isEdit} isHover ={true} />
+                </div>
+            ))}
             <div>
             </div>
         </div>
