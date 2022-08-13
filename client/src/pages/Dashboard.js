@@ -23,7 +23,24 @@ const Dashboard = ({user, authenticated}) => {
     useEffect(() => {
         renderPlaylists()
     },[])
+    const renderUpdate = (index) => {
+        let tempArray = [...playlists]
+        let tempObj = playlists[index]
+        tempObj.isEdit = true 
+            tempArray.splice(index,1,tempObj)
+        setPlaylists(tempArray)
+    }
 
+    const updatePlaylist = (playlist,index,newName,newMood,newImg) => {
+        let tempArray = [...playlists]
+        let tempObj = playlists[index]
+        if(newName){tempObj.name = newName}
+        if(newMood){tempObj.mood = newMood}
+        if(newImg){tempObj.newImg = newImg}
+        tempObj.isEdit = false 
+            tempArray.splice(index,1,tempObj)
+        setPlaylists(tempArray)
+    }
     return(user && authenticated) ? (
         <div>
             <div>
@@ -31,7 +48,7 @@ const Dashboard = ({user, authenticated}) => {
             </div>
             {playlists.map((playlist,index)=> (
                 <div>
-                <Playlist playlist={playlist} index ={index} isEdit ={playlist.isEdit} isHover ={true} />
+                <Playlist playlist={playlist} index ={index} isEdit ={playlist.isEdit} isHover ={true} renderUpdate = {renderUpdate} updatePlaylist ={updatePlaylist} />
                 </div>
             ))}
             <div>
