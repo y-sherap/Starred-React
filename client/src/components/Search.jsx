@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import Song from "./Song"
 
-const Search = (props) => {
+const Search = ({user,playlists}) => {
     const [songs,setSongs] = useState([])
     const [search,setSearch] = useState()
     const [isSearch,setIsSearch] = useState(false)
@@ -27,7 +27,7 @@ const Search = (props) => {
     const getSongs = async () => {
         await axios.request(options).then(function (response) {
             setSongs(response.data.tracks.items)
-            console.log(props.user)
+            console.log(user)
         }).catch(function (error) {
             console.error(error);
         });
@@ -43,7 +43,7 @@ const Search = (props) => {
         {isSearch ?
             <div    >
                 {songs.map((song) => (
-                    <Song song={song.data}  inPlaylist = {false}/>
+                    <Song song={song.data}  inPlaylist = {false} playlists = {playlists}/>
                 ))}
             </div> 
         :<span></span>}

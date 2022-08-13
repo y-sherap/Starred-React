@@ -127,7 +127,7 @@ const Dashboard = ({user, authenticated}) => {
                 </div>
             </div>
             <div>
-            <Search user = {user}/>
+            <Search user = {user} playlists = {playlists}/>
             </div>
             {playlists.map((playlist,index)=> (
                 <div>
