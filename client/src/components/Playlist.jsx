@@ -1,4 +1,4 @@
-const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,renderPlaylist}) => {
+const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,renderPlaylist,isHover}) => {
     return(
         <div>
             <img onClick={() => updateHover()} src = {playlist.image} alt = "playlist image"></img>
