@@ -143,3 +143,4 @@ const Dashboard = ({user, authenticated}) => {
 }
 
 export default Dashboard
+
