@@ -17,7 +17,10 @@ const Dashboard = ({user, authenticated}) => {
             image: image
         })
         setName('')
-        setPlaylists(...playlists, res)
+        let tempArray = [...playlists]
+        let tempObj ={...res.data}
+        tempArray.push(tempObj)
+        setPlaylists(tempArray)
         // pulling array from playlists, passing in res, updating the state
         }
 
@@ -37,6 +40,14 @@ const Dashboard = ({user, authenticated}) => {
             e.preventDefault()
             createPlaylist(e)
           }
+
+
+         const removePlaylist = async (id, index) => {
+         await Client.delete(`/playlist/${id}`) 
+         let tempArray = [...playlists]
+         tempArray.splice(index, 1)
+        setPlaylists(tempArray)
+     }
 
     const renderPlaylists = async () => {
         try{
@@ -120,7 +131,7 @@ const Dashboard = ({user, authenticated}) => {
             </div>
             {playlists.map((playlist,index)=> (
                 <div>
-                <Playlist playlist={playlist} index ={index} isEdit ={playlist.isEdit} isHover ={playlist.isHover} renderUpdate = {renderUpdate} updatePlaylist ={updatePlaylist}  updateHover = {updateHover}/>
+                <Playlist playlist={playlist} index ={index} isEdit ={playlist.isEdit} isHover ={playlist.isHover} renderUpdate = {renderUpdate} updatePlaylist ={updatePlaylist}  updateHover = {updateHover} removePlaylist={removePlaylist}/>
                 </div>
             ))}
 
@@ -129,7 +140,6 @@ const Dashboard = ({user, authenticated}) => {
             </div>
         </div>
     ) : <div><h1>Please sign in</h1></div>
-
 }
 
 export default Dashboard
