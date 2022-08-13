@@ -32,7 +32,7 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,rend
                                     <button onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
                                 </div>
                                 :<button onClick={() => renderUpdate(index)}>Update</button>}
-                            {isEdit? <span></span>:<button onClick={() => removePlaylist(playlist,index)}>Remove</button>}
+                            {isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)}>Remove</button>}
                         </div>
                       </div>: <span></span>}
         </div>
