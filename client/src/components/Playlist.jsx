@@ -15,9 +15,6 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,rend
     const imgHandler = (e) =>{
         setNewImg(e.target.value)
     }
-    
-
-    
     return(
         <div>
             <img onMouseOver={() => updateHover(true,index)}  src = {playlist.image} alt = "playlist image"></img>
