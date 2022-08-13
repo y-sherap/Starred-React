@@ -16,14 +16,15 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,rend
         setNewImg(e.target.value)
     }
     
+
     
     return(
         <div>
-            <img onClick={() => updateHover()} src = {playlist.image} alt = "playlist image"></img>
+            <img onMouseOver={() => updateHover(true,index)}  src = {playlist.image} alt = "playlist image"></img>
             {isHover ?<div>
                         {isEdit? <span></span>:<h3 onClick={() => renderPlaylist(playlist.id,playlist.name)}>{playlist.name}</h3>}
                         {isEdit? <span></span>:<h5>{playlist.mood}</h5>}
-                        <div>
+                        <div onMouseOut = { () => updateHover(false,index)}>
                             {isEdit? 
                                 <div>
                                     <input type="text" placeholder="Playlist Name" onChange={(e) => nameHandler(e) }></input>
