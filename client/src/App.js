@@ -53,7 +53,7 @@ function App() {
             element={<Dashboard user={user} authenticated={authenticated}/>}  
           />
           <Route
-            path="/playlist"
+            path="dashboard/playlist/:id/:name"
             element={
               <PlaylistDetails user={user} authenticated={authenticated} />
             }
