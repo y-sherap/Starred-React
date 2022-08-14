@@ -20,7 +20,6 @@ const Dashboard = ({user, authenticated}) => {
         let tempObj ={...res.data}
         tempArray.push(tempObj)
         setPlaylists(tempArray)
-        // pulling array from playlists, passing in res, updating the state
         }
         const changeName = (event) => {
             let n = event.target.value
