@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,renderPlaylist,renderUpdate,isHover,isEdit}) => {
+const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goToPlaylist,renderUpdate,isHover,isEdit}) => {
     const [newName,setNewName] = useState()
     const [newMood,setNewMood] = useState()
     const [newImg,setNewImg] = useState()
@@ -19,7 +19,7 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,rend
         <div>
             <img onMouseOver={() => updateHover(true,index)}  src = {playlist.image} alt = "playlist image"></img>
             {isHover ?<div>
-                        {isEdit? <span></span>:<h3 onClick={() => renderPlaylist(playlist.id,playlist.name)}>{playlist.name}</h3>}
+                        {isEdit? <span></span>:<h3 onClick={() => goToPlaylist(playlist)}>{playlist.name}</h3>}
                         {isEdit? <span></span>:<h5>{playlist.mood}</h5>}
                         <div onMouseOut = { () => updateHover(false,index)}>
                             {isEdit? 

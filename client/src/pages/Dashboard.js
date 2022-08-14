@@ -1,15 +1,14 @@
 import Search from "../components/Search"
 import Playlist from "../components/Playlist"
 import { useState,useEffect} from "react"
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Client from "../services/api"
 const Dashboard = ({user, authenticated}) => {
     const [playlists,setPlaylists] = useState([])
-
     const [name, setName] = useState('')
     const [mood, setMood] = useState('')
     const [image, setImage] = useState('')
-
+    const navigate = useNavigate()
     const createPlaylist = async (e) => {
     const res = await Client.post(`/playlist/${user.id}`, {
             name: name,
@@ -48,7 +47,7 @@ const Dashboard = ({user, authenticated}) => {
     const renderPlaylists = async () => {
         try{
             let temp = []
-            const res = await Client.get(`/playlist/${user.id}`)
+            const res = await Client.get(`/playlist/all`)
             const playlistArr = res.data
             playlistArr.forEach((playlist)=> {
                 let tempObj = {...playlist,isEdit: false, isHover:false}
@@ -59,6 +58,11 @@ const Dashboard = ({user, authenticated}) => {
             console.error(e)
         }
     }
+
+    const goToPlaylist=(playlist) =>{
+        navigate(`playlist/${playlist.id}/${playlist.name}`)
+    }
+
     useEffect(() => {
         renderPlaylists()
     },[])
@@ -124,7 +128,7 @@ const Dashboard = ({user, authenticated}) => {
             </div>
             {playlists.map((playlist,index)=> (
                 <div>
-                <Playlist playlist={playlist} index ={index} isEdit ={playlist.isEdit} isHover ={playlist.isHover} renderUpdate = {renderUpdate} updatePlaylist ={updatePlaylist}  updateHover = {updateHover} removePlaylist={removePlaylist}/>
+                <Playlist playlist={playlist} index ={index} isEdit ={playlist.isEdit} isHover ={playlist.isHover} renderUpdate = {renderUpdate} updatePlaylist ={updatePlaylist}  updateHover = {updateHover} removePlaylist={removePlaylist} goToPlaylist={goToPlaylist}/>
                 </div>
             ))}
 
