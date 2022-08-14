@@ -6,14 +6,15 @@ const Song = ({ song, playlists, removeFromPlaylist, inPlaylist,index }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      console.log(pickPlaylist)
+      if(pickPlaylist){
       let res = await Client.post(`/song/${pickPlaylist}`, {
         title: song.name,
         artist: song.artists.items[0].profile.name,
         duration: song.duration.totalMilliseconds,
         image: song.albumOfTrack.coverArt.sources[0].url,
         playlistId: pickPlaylist
-      })
-      console.log(res)
+      })}
     } catch (e) {
       console.error(e)
     }
@@ -29,6 +30,7 @@ const Song = ({ song, playlists, removeFromPlaylist, inPlaylist,index }) => {
       ) : (
         <form onSubmit={(e) => handleSubmit(e)}>
           <select onChange={(e) => setPickPlaylist(e.target.value)}id="select-playlist">
+            <option></option>
             {playlists.map((playlist) => (
               <option value={playlist.id}>{playlist.name}</option>
             ))}
