@@ -7,10 +7,11 @@ import Song from "../components/Song"
 const PlaylistDetails = ({user,authenticated,}) => {
     const {name,id} = useParams()
     const [songs,setSongs]= useState([])
-
+    const [playlist,setPlaylist] = useState()
     const renderSongs = async () =>{
         const res = await Client.get(`/song/${id}`)
-        console.log(res)
+        setSongs(res.data)
+        setPlaylist(res.data[0].Playlist)
     }
     useEffect(()=>{
         renderSongs()
@@ -18,6 +19,11 @@ const PlaylistDetails = ({user,authenticated,}) => {
     return(
         <div>   
             <h1>{name}</h1>
+            {songs.map((song,index)=>(
+                <div>
+                <Song song = {song} index={index} inPlaylist={true} />
+                </div>
+            ))}
         </div>
     )
 }
