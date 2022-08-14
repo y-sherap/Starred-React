@@ -8,6 +8,7 @@ const PlaylistDetails = ({user,authenticated,}) => {
     const {name,id} = useParams()
     const [songs,setSongs]= useState([])
     const [playlist,setPlaylist] = useState()
+
     const renderSongs = async () =>{
         const res = await Client.get(`/song/${id}`)
         setSongs(res.data)
@@ -16,12 +17,23 @@ const PlaylistDetails = ({user,authenticated,}) => {
     useEffect(()=>{
         renderSongs()
     },[])
+
+    const removeSong = async (id,index) =>{
+        try{
+            const res = Client.delete(`/song/${id}`)
+            let tempArray = [...songs]
+            tempArray.splice(index, 1)
+            setSongs(tempArray)
+        }catch(e){
+            console.error(e)
+        }
+    }
     return(
         <div>   
             <h1>{name}</h1>
             {songs.map((song,index)=>(
                 <div>
-                <Song song = {song} index={index} inPlaylist={true} />
+                <Song song = {song} index={index} inPlaylist={true} removeSong={removeSong} />
                 </div>
             ))}
         </div>

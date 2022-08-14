@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Client from "../services/api"
-const Song = ({ song, playlists, removeFromPlaylist, inPlaylist,index }) => {
+const Song = ({ song, playlists, removeSong, inPlaylist,index }) => {
   const [pickPlaylist,setPickPlaylist] = useState()
 
   const handleSubmit = async (e) => {
@@ -26,7 +26,7 @@ const Song = ({ song, playlists, removeFromPlaylist, inPlaylist,index }) => {
       {inPlaylist ?<p>{song.artist}</p> :<p>{song.artists.items[0].profile.name}</p>}
       {inPlaylist ? <p>{Math.floor(parseInt(song.duration/60000))}</p> : <span></span>}
       {inPlaylist ? (
-        <button onClick={(song) => removeFromPlaylist(song,index)}>Remove</button>
+        <button onClick={() => removeSong(song.id,index)}>Remove</button>
       ) : (
         <form onSubmit={(e) => handleSubmit(e)}>
           <select onChange={(e) => setPickPlaylist(e.target.value)}id="select-playlist">
