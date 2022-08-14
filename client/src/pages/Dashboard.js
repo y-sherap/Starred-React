@@ -23,7 +23,6 @@ const Dashboard = ({user, authenticated}) => {
         setPlaylists(tempArray)
         // pulling array from playlists, passing in res, updating the state
         }
-
         const changeName = (event) => {
             let n = event.target.value
             setName(n)
@@ -40,19 +39,16 @@ const Dashboard = ({user, authenticated}) => {
             e.preventDefault()
             createPlaylist(e)
           }
-
-
          const removePlaylist = async (id, index) => {
          await Client.delete(`/playlist/${id}`) 
          let tempArray = [...playlists]
          tempArray.splice(index, 1)
         setPlaylists(tempArray)
      }
-
     const renderPlaylists = async () => {
         try{
             let temp = []
-            const res = await Client.get(`/playlist/all`)
+            const res = await Client.get(`/playlist/${user.id}`)
             const playlistArr = res.data
             playlistArr.forEach((playlist)=> {
                 let tempObj = {...playlist,isEdit: false, isHover:false}
@@ -73,7 +69,6 @@ const Dashboard = ({user, authenticated}) => {
             tempArray.splice(index,1,tempObj)
         setPlaylists(tempArray)
     }
-
     const updatePlaylist = (playlist,index,newName,newMood,newImg) => {
         let tempArray = [...playlists]
         let tempObj = playlists[index]
@@ -84,7 +79,6 @@ const Dashboard = ({user, authenticated}) => {
             tempArray.splice(index,1,tempObj)
         setPlaylists(tempArray)
     }
-
     const updateHover = (value,index) => {
         let tempArray = [...playlists]
         let tempObj = playlists[index]
@@ -92,7 +86,6 @@ const Dashboard = ({user, authenticated}) => {
             tempArray.splice(index,1,tempObj)
         setPlaylists(tempArray)
     }
-
     return(user && authenticated) ? (
         <div>
             <div className="form">
@@ -141,6 +134,5 @@ const Dashboard = ({user, authenticated}) => {
         </div>
     ) : <div><h1>Please sign in</h1></div>
 }
-
 export default Dashboard
 
