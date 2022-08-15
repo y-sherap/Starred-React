@@ -1,5 +1,5 @@
 import Search from '../../components/Search/Search'
-import Playlist from '../../components/HomePlaylist/HomePlaylist'
+import Playlist from '../../components/Playlist/Playlist'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
