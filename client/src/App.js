@@ -11,7 +11,6 @@ import './styles/App.css'
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
-
   const handleLogOut = () => {
     setUser(null)
     toggleAuthenticated(false)
@@ -37,7 +36,7 @@ function App() {
       />
       <main>
         <Routes>
-          <Route path="/home" element={<Home setUser={setUser}
+          <Route path="/" element={<Home user={user}
                 authenticated={authenticated}/>} />
           <Route
             path="/login"
