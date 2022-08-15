@@ -2,15 +2,15 @@ import Client from '../services/api'
 import HomePlaylist from '../components/HomePlaylist'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-const Home = () => {
+import axios from 'axios'
+const Home = ({user,authenticated}) => {
   const [playlists, setPlaylists] = useState([])
   const navigate = useNavigate()
 
   const renderPlaylists = async () => {
     try {
       let temp = []
-      const res = await Client.get(`/playlist/all`)
+      const res = await axios.get(`http://localhost:3001/playlist/all`)
       const playlistArr = res.data
       playlistArr.forEach((playlist) => {
         let tempObj = { ...playlist, isEdit: false, isHover: false }
@@ -55,6 +55,7 @@ const Home = () => {
             isHover={playlist.isHover}
             renderPlaylists={renderPlaylists}
             updateHover={updateHover}
+            user = {user}
           />
         </div>
       ))}

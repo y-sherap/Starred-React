@@ -9,13 +9,18 @@ const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
   }
   return (
     <div>
+        {user ?      <img
+        onMouseOver={() => updateHover(true, index)}
+        src={playlist.image}
+        alt="playlist image"
+      /> :
       <img
         onMouseOver={() => updateHover(true, index)}
         src={playlist.image}
         alt="playlist image"
         onClick={togglePopup}
       />
-
+        }
       {isHover ? (
         <div>
           <h3>{playlist.name}</h3>
