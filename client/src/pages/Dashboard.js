@@ -46,7 +46,7 @@ const Dashboard = ({user, authenticated}) => {
     const renderPlaylists = async () => {
         try{
             let temp = []
-            const res = await Client.get(`/playlist/all`)
+            const res = await Client.get(`/playlist/${user.id}`)
             const playlistArr = res.data
             playlistArr.forEach((playlist)=> {
                 let tempObj = {...playlist,isEdit: false, isHover:false}
