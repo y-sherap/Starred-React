@@ -26,6 +26,7 @@ const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
           onMouseOver={() => updateHover(true, index)}
           src={playlist.image}
           alt="playlist image"
+          className="PlaylistImage"  
         />
       ) : (
         <img
@@ -33,7 +34,7 @@ const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
           src={playlist.image}
           alt="playlist image"
           onClick={togglePopup}
-        />
+          className="PlaylistImage"        />
       )}
       {isHover ? (
         <div>
@@ -46,15 +47,18 @@ const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
       {isOpen && (
         <Popup
           content={
-            <>
-              <b>
-                Join Starred to keep track of your favorite songs and playlists
-              </b>
-              <button onClick={navigateRegister}>Sign Up</button>
-
-              <b>Already have an account?</b>
-              <button onClick={navigateLogin}>Sign In</button>
-            </>
+         
+              <div id="Popup content">
+                <div id="SignUp">
+                  <h4>Join Starred to keep track of your favorite songs and playlists </h4>         
+                    <button onClick={navigateRegister}>Sign Up</button>
+                </div>
+                <div id="SignIn">
+                  <h4>Already have an account?</h4>
+                    <button onClick={navigateLogin}>Sign In</button>
+                </div>
+              </div>
+          
           }
           handleClose={togglePopup}
         />
