@@ -27,7 +27,6 @@ const Search = ({user,playlists}) => {
     const getSongs = async () => {
         await axios.request(options).then(function (response) {
             setSongs(response.data.tracks.items)
-            console.log(user)
         }).catch(function (error) {
             console.error(error);
         });
