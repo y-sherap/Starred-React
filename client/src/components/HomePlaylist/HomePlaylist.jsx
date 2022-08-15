@@ -1,41 +1,70 @@
-import { useState } from "react"
-import './playlist.css'
+import Popup from '../PopUp/PopUp'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
+const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
+  let navigate = useNavigate()
 
-const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goToPlaylist,renderUpdate,isHover,isEdit}) => {
-    const [newName,setNewName] = useState()
-    const [newMood,setNewMood] = useState()
-    const [newImg,setNewImg] = useState()
-    
-    const nameHandler = (e) =>{
-        setNewName(e.target.value)
-    }
-    const moodHandler = (e) =>{
-        setNewMood(e.target.value)
-    }
-    const imgHandler = (e) =>{
-        setNewImg(e.target.value)
-    }
-    return(
-        <div className="playlistCard"  onMouseOver={() => updateHover(true,index)} onMouseOut = { () => updateHover(false,index)} >
-            <img src = {playlist.image} alt = "playlist image" className="playlistImage"></img>
-            <div>
-                        {isEdit? <span></span>:<h3 onClick={() => goToPlaylist(playlist)} className="playlistName">{playlist.name}</h3>}
-                        {isEdit? <span></span>:<h5>{playlist.mood}</h5>}
-                        <div className="playlistCardUpdateForm">
-                        {isHover  ? isEdit? 
-                                <div id="playlistUpdateFormFields">
-                                    <input type="text" placeholder="Playlist Name" onChange={(e) => nameHandler(e) }></input>
-                                    <input type="text" placeholder="Playlist Mood" onChange={(e) => moodHandler(e)}></input>
-                                    <input type="text" placeholder="Playlist Image" onChange={(e) => imgHandler(e)}></input>
-                                    <button onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
-                                </div>
-                                :<button onClick={() => renderUpdate(index)} >Update</button> : <span></span>}
-                            { isHover ? isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)} className="removeButton" >Remove</button> : <span></span>}
-                        </div>
-                      </div>
+  const [isOpen, setIsOpen] = useState(false)
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const navigateRegister = () => {
+    navigate('/register')
+  }
+
+  const navigateLogin = () => {
+    navigate('/login')
+  }
+
+  return (
+    <div>
+      {user ? (
+        <img
+          onMouseOver={() => updateHover(true, index)}
+          src={playlist.image}
+          alt="playlist image"
+          className="PlaylistImage"  
+        />
+      ) : (
+        <img
+          onMouseOver={() => updateHover(true, index)}
+          src={playlist.image}
+          alt="playlist image"
+          onClick={togglePopup}
+          className="PlaylistImage"        />
+      )}
+      {isHover ? (
+        <div>
+          <h3>{playlist.name}</h3>
+          <h5>{playlist.mood}</h5>
         </div>
-    )
+      ) : (
+        <span></span>
+      )}
+      {isOpen && (
+        <Popup
+          content={
+         
+              <div id="Popup content">
+                <div id="SignUp">
+                  <h4>Join Starred to keep track of your favorite songs and playlists </h4>         
+                    <button onClick={navigateRegister} className="popUpButtons">Sign Up</button>
+                </div>
+                <div id="SignIn">
+                  <h4>Already have an account?</h4>
+                    <button onClick={navigateLogin} className="popUpButtons">Sign In</button>
+                </div>
+              </div>
+          
+          }
+          handleClose={togglePopup}
+        />
+      )}
+    </div>
+  )
 }
 
-export default Playlist 
+export default HomePlaylist
