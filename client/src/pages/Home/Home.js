@@ -1,9 +1,9 @@
-import Client from '../services/api'
-import HomePlaylist from '../components/HomePlaylist'
+import Client from '../../services/api'
+import HomePlaylist from '../../components/HomePlaylist/HomePlaylist'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-const Home = ({user,authenticated}) => {
+const Home = ({ user, authenticated }) => {
   const [playlists, setPlaylists] = useState([])
   const navigate = useNavigate()
 
@@ -55,7 +55,7 @@ const Home = ({user,authenticated}) => {
             isHover={playlist.isHover}
             renderPlaylists={renderPlaylists}
             updateHover={updateHover}
-            user = {user}
+            user={user}
           />
         </div>
       ))}

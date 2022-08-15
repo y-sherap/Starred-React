@@ -1,8 +1,8 @@
-import Search from '../components/Search'
-import Playlist from '../components/Playlist'
+import Search from '../../components/Search/Search'
+import Playlist from '../../components/HomePlaylist/HomePlaylist'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Client from '../services/api'
+import Client from '../../services/api'
 const Dashboard = ({ user, authenticated }) => {
   const [playlists, setPlaylists] = useState([])
   const [name, setName] = useState('')
@@ -159,4 +159,3 @@ const Dashboard = ({ user, authenticated }) => {
   )
 }
 export default Dashboard
-

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
-import Nav from './components/Nav'
-import PlaylistDetails from './pages/PlaylistDetails'
-import SignIn from './pages/SignIn'
-import SignUp from './pages/SignUp'
-import Home from './pages/Home'
-import Dashboard from './pages/Dashboard'
+import Nav from './components/Nav/Nav'
+import PlaylistDetails from './pages/PlaylistDetails/PlaylistDetails'
+import SignIn from './pages/SignIn/SignIn'
+import SignUp from './pages/SignUp/SignUp'
+import Home from './pages/Home/Home'
+import Dashboard from './pages/Dashboard/Dashboard'
 import { CheckSession } from './services/Auth'
 import './styles/App.css'
 function App() {
@@ -36,8 +36,10 @@ function App() {
       />
       <main>
         <Routes>
-          <Route path="/" element={<Home user={user}
-                authenticated={authenticated}/>} />
+          <Route
+            path="/"
+            element={<Home user={user} authenticated={authenticated} />}
+          />
           <Route
             path="/login"
             element={
@@ -50,7 +52,7 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route
             path="/dashboard"
-            element={<Dashboard user={user} authenticated={authenticated}/>}  
+            element={<Dashboard user={user} authenticated={authenticated} />}
           />
           <Route
             path="dashboard/playlist/:id/:name"
