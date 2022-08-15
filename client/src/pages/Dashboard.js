@@ -62,45 +62,34 @@ const Dashboard = ({ user, authenticated }) => {
     navigate(`playlist/${playlist.id}/${playlist.name}`)
   }
 
+  const updatePlaylist = (playlist, index, newName, newMood, newImg) => {
+    let tempArray = [...playlists]
+    let tempObj = playlists[index]
+    if (newName) {
+      tempObj.name = newName
+    }
+    if (newMood) {
+      tempObj.mood = newMood
+    }
+    if (newImg) {
+      tempObj.newImg = newImg
+    }
+    tempObj.isEdit = false
+    tempArray.splice(index, 1, tempObj)
+    setPlaylists(tempArray)
+  }
   useEffect(() => {
-    renderPlaylists()
-  }, [])
+    if (user && authenticated) {
+      renderPlaylists()
+    }
+  }, [user])
+
   const renderUpdate = (index) => {
     let tempArray = [...playlists]
     let tempObj = playlists[index]
     tempObj.isEdit = true
     tempArray.splice(index, 1, tempObj)
     setPlaylists(tempArray)
-  }
-  const updatePlaylist = (playlist, index, newName, newMood, newImg) => {
-    let tempArray = [...playlists]
-    let tempObj = playlists[index]
-    if (newName) {
-        tempObj.name = newName
-      }
-    if (newMood) {
-        tempObj.mood = newMood
-    }
-    if (newImg) {
-        tempObj.newImg = newImg
-    }
-        tempObj.isEdit = false
-        tempArray.splice(index, 1, tempObj)
-        setPlaylists(tempArray)
-    }
-    useEffect(() => {
-    if(user && authenticated){
-        renderPlaylists()
-    }
-    },[user])
-
-    const renderUpdate = (index) => {
-        let tempArray = [...playlists]
-        let tempObj = playlists[index]
-        tempObj.isEdit = true 
-            tempArray.splice(index,1,tempObj)
-        setPlaylists(tempArray)
-
   }
   const updateHover = (value, index) => {
     let tempArray = [...playlists]
