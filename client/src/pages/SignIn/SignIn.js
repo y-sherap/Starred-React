@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SignInUser } from '../services/Auth'
+import { SignInUser } from '../../services/Auth'
 import { useNavigate } from 'react-router-dom'
 const SignIn = ({ setUser, toggleAuthenticated }) => {
   let navigate = useNavigate()
@@ -12,7 +12,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
-    setFormValues({email: '',password: ''})
+    setFormValues({ email: '', password: '' })
     setUser(payload)
     toggleAuthenticated(true)
     navigate('/dashboard')

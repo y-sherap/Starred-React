@@ -1,10 +1,8 @@
-import Popup from '../components/PopUp/PopUp'
+import Popup from '../PopUp/PopUp'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-
 const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
-  
   let navigate = useNavigate()
 
   const [isOpen, setIsOpen] = useState(false)
@@ -23,18 +21,20 @@ const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
 
   return (
     <div>
-        {user ?      <img
-        onMouseOver={() => updateHover(true, index)}
-        src={playlist.image}
-        alt="playlist image"
-      /> :
-      <img
-        onMouseOver={() => updateHover(true, index)}
-        src={playlist.image}
-        alt="playlist image"
-        onClick={togglePopup}
-      />
-        }
+      {user ? (
+        <img
+          onMouseOver={() => updateHover(true, index)}
+          src={playlist.image}
+          alt="playlist image"
+        />
+      ) : (
+        <img
+          onMouseOver={() => updateHover(true, index)}
+          src={playlist.image}
+          alt="playlist image"
+          onClick={togglePopup}
+        />
+      )}
       {isHover ? (
         <div>
           <h3>{playlist.name}</h3>
@@ -47,7 +47,9 @@ const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
         <Popup
           content={
             <>
-              <b>Join Starred to keep track of your favorite songs and playlists</b>
+              <b>
+                Join Starred to keep track of your favorite songs and playlists
+              </b>
               <button onClick={navigateRegister}>Sign Up</button>
 
               <b>Already have an account?</b>
