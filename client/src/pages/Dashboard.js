@@ -16,6 +16,8 @@ const Dashboard = ({user, authenticated}) => {
             image: image
         })
         setName('')
+        setMood('')
+        setImage('')
         let tempArray = [...playlists]
         let tempObj ={...res.data}
         tempArray.push(tempObj)

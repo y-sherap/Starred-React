@@ -22,7 +22,7 @@ const Song = ({ song, playlists, removeSong, inPlaylist,index }) => {
   return (
     <div className="song">
       {inPlaylist ? <img src={song.image}></img> : <span></span>}
-      {inPlaylist ?<p>{song.name}</p> :<p>{song.name}</p>}
+      {inPlaylist ?<p>{song.title}</p> :<p>{song.name}</p>}
       {inPlaylist ?<p>{song.artist}</p> :<p>{song.artists.items[0].profile.name}</p>}
       {inPlaylist ? <p>{Math.floor(parseInt(song.duration/60000))}</p> : <span></span>}
       {inPlaylist ? (
