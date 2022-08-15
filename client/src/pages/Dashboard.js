@@ -1,3 +1,4 @@
+
 import Search from '../components/Search'
 import Playlist from '../components/Playlist'
 import { useState, useEffect } from 'react'
@@ -159,3 +160,4 @@ const Dashboard = ({ user, authenticated }) => {
   )
 }
 export default Dashboard
+
