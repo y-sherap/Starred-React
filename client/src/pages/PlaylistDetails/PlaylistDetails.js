@@ -26,8 +26,9 @@ const PlaylistDetails = ({ user, authenticated }) => {
     }
   }
   return (
-    <div>
-      <h1>{name}</h1>
+    <div id="playlistDetailsContainer">
+      <h1 id="playlistName">{name}</h1>
+      <div id="songContainer">
       {songs.map((song, index) => (
         <div>
           <Song
@@ -36,8 +37,9 @@ const PlaylistDetails = ({ user, authenticated }) => {
             inPlaylist={true}
             removeSong={removeSong}
           />
-        </div>
+        </div>       
       ))}
+      </div>
     </div>
   )
 }

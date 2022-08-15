@@ -23,14 +23,14 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
                         {isEdit? <span></span>:<h5>{playlist.mood}</h5>}
                         <div onMouseOut = { () => updateHover(false,index)} className="playlistCardUpdateForm">
                             {isEdit? 
-                                <div>
+                                <div id="playlistUpdateFormFields">
                                     <input type="text" placeholder="Playlist Name" onChange={(e) => nameHandler(e) }></input>
                                     <input type="text" placeholder="Playlist Mood" onChange={(e) => moodHandler(e)}></input>
                                     <input type="text" placeholder="Playlist Image" onChange={(e) => imgHandler(e)}></input>
                                     <button onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
                                 </div>
-                                :<button onClick={() => renderUpdate(index)}>Update</button>}
-                            {isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)}>Remove</button>}
+                                :<button onClick={() => renderUpdate(index)} >Update</button>}
+                            {isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)} className="removeButton" >Remove</button>}
                         </div>
                       </div>: <span></span>}
         </div>

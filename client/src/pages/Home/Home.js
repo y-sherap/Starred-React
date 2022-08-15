@@ -46,7 +46,7 @@ const Home = ({ user, authenticated }) => {
   }
 
   return (
-    <div>
+    <div id="homeContainer">
       {playlists.map((playlist, index) => (
         <div>
           <HomePlaylist

@@ -36,7 +36,7 @@ const Search = ({ user, playlists }) => {
     setIsSearch(true)
   }
   return (
-    <div>
+    <div id="searchContainer">
       <input
         type="text"
         onChange={(e) => setSearch(e.target.value)}
@@ -45,8 +45,10 @@ const Search = ({ user, playlists }) => {
             getSongs()
           }
         }}
+        id="Search"
       ></input>
-      <button
+      <button     
+       className="removeButton"
         onClick={() => {
           setIsSearch(false)
         }}
@@ -54,7 +56,7 @@ const Search = ({ user, playlists }) => {
         X
       </button>
       {isSearch ? (
-        <div>
+        <div id="searchResults">
           {songs.map((song) => (
             <Song song={song.data} inPlaylist={false} playlists={playlists} />
           ))}
