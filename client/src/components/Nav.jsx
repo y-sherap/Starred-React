@@ -5,7 +5,7 @@ const Nav = () => {
         <header>
             <nav>
                 <div>
-                    <Link to = '/'>Home</Link>
+                    <Link to = '/home'>Home</Link>
                     <Link to = '/dashboard'>Playlists</Link>
                 </div>
                 <div>
