@@ -3,7 +3,6 @@ import Playlist from '../components/Playlist'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../services/api'
-
 const Dashboard = ({ user, authenticated }) => {
   const [playlists, setPlaylists] = useState([])
   const [name, setName] = useState('')
@@ -61,6 +60,17 @@ const Dashboard = ({ user, authenticated }) => {
 
   const goToPlaylist = (playlist) => {
     navigate(`playlist/${playlist.id}/${playlist.name}`)
+  }
+
+  useEffect(() => {
+    renderPlaylists()
+  }, [])
+  const renderUpdate = (index) => {
+    let tempArray = [...playlists]
+    let tempObj = playlists[index]
+    tempObj.isEdit = true
+    tempArray.splice(index, 1, tempObj)
+    setPlaylists(tempArray)
   }
   const updatePlaylist = (playlist, index, newName, newMood, newImg) => {
     let tempArray = [...playlists]
