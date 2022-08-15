@@ -37,7 +37,8 @@ function App() {
       />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home setUser={setUser}
+                authenticated={authenticated}/>} />
           <Route
             path="/login"
             element={
