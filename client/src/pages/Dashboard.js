@@ -65,8 +65,10 @@ const Dashboard = ({user, authenticated}) => {
     }
 
     useEffect(() => {
+    if(user && authenticated){
         renderPlaylists()
-    },[])
+    }
+    },[user])
     const renderUpdate = (index) => {
         let tempArray = [...playlists]
         let tempObj = playlists[index]
