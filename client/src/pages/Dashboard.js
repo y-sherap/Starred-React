@@ -47,7 +47,7 @@ const Dashboard = ({ user, authenticated }) => {
   const renderPlaylists = async () => {
     try {
       let temp = []
-      const res = await Client.get(`/playlist/all`)
+      const res = await Client.get(`/playlist/${user.id}`)
       const playlistArr = res.data
       playlistArr.forEach((playlist) => {
         let tempObj = { ...playlist, isEdit: false, isHover: false }
@@ -66,9 +66,18 @@ const Dashboard = ({ user, authenticated }) => {
     let tempArray = [...playlists]
     let tempObj = playlists[index]
     if (newName) {
-      tempObj.name = newName
+        tempObj.name = newName
+      }
+    if (newMood) {
+        tempObj.mood = newMood
     }
-}
+    if (newImg) {
+        tempObj.newImg = newImg
+    }
+        tempObj.isEdit = false
+        tempArray.splice(index, 1, tempObj)
+        setPlaylists(tempArray)
+    }
     useEffect(() => {
     if(user && authenticated){
         renderPlaylists()
@@ -81,15 +90,7 @@ const Dashboard = ({ user, authenticated }) => {
         tempObj.isEdit = true 
             tempArray.splice(index,1,tempObj)
         setPlaylists(tempArray)
-    if (newMood) {
-      tempObj.mood = newMood
-    }
-    if (newImg) {
-      tempObj.newImg = newImg
-    }
-    tempObj.isEdit = false
-    tempArray.splice(index, 1, tempObj)
-    setPlaylists(tempArray)
+
   }
   const updateHover = (value, index) => {
     let tempArray = [...playlists]
