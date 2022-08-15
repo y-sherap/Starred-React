@@ -51,11 +51,11 @@ const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
               <div id="Popup content">
                 <div id="SignUp">
                   <h4>Join Starred to keep track of your favorite songs and playlists </h4>         
-                    <button onClick={navigateRegister}>Sign Up</button>
+                    <button onClick={navigateRegister} className="popUpButtons">Sign Up</button>
                 </div>
                 <div id="SignIn">
                   <h4>Already have an account?</h4>
-                    <button onClick={navigateLogin}>Sign In</button>
+                    <button onClick={navigateLogin} className="popUpButtons">Sign In</button>
                 </div>
               </div>
           

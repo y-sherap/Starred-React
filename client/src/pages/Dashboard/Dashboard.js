@@ -100,9 +100,9 @@ const Dashboard = ({ user, authenticated }) => {
   }
   return user && authenticated ? (
     <div>
-      <div className="form">
-        <h3 className="addPlaylist">Create a Playlist</h3>
-        <div className="input-div">
+      <div className="createPlaylistFormContainer">
+        <h3 id="dashboardPageTitle">Create a Playlist</h3>
+        <div className="createPlaylistForm">
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="name">
               <input
@@ -134,6 +134,7 @@ const Dashboard = ({ user, authenticated }) => {
       <div>
         <Search user={user} playlists={playlists} />
       </div>
+      <div id="playlistContainer">
       {playlists.map((playlist, index) => (
         <div>
           <Playlist
@@ -149,8 +150,7 @@ const Dashboard = ({ user, authenticated }) => {
           />
         </div>
       ))}
-
-      <div></div>
+      </div>
     </div>
   ) : (
     <div>

@@ -36,7 +36,7 @@ const SignUp = () => {
   return (
     <div className="signin col">
       <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
+        <form className="signUpForm" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="name">Name</label>
             <input

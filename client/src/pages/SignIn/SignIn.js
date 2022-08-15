@@ -19,9 +19,9 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
   }
 
   return (
-    <div className="signin col">
+    <div className="signinPage">
       <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
+        <form className="signInForm" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
             <input
