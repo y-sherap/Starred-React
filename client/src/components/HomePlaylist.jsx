@@ -1,14 +1,43 @@
-const Playlist = ({playlist,index,updateHover,isHover,}) => {
+import Popup from '../components/PopUp/PopUp'
+import React, { useState } from 'react'
 
-    return(
+const Playlist = ({ playlist, index, updateHover, isHover, user }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen)
+  }
+  return (
+    <div>
+      <img
+        onMouseOver={() => updateHover(true, index)}
+        src={playlist.image}
+        alt="playlist image"
+        onClick={togglePopup}
+      />
+
+      {isHover ? (
         <div>
-            <img onMouseOver={() => updateHover(true,index)}  src = {playlist.image} alt = "playlist image"></img>
-            {isHover ?<div>
-                        <h3>{playlist.name}</h3>
-                        <h5>{playlist.mood}</h5>
-                      </div>: <span></span> }
+          <h3>{playlist.name}</h3>
+          <h5>{playlist.mood}</h5>
         </div>
-    )
+      ) : (
+        <span></span>
+      )}
+      {isOpen && (
+        <Popup
+          content={
+            <>
+              <b>Please Sign Up TO View The Content</b>
+              <p>Gang</p>
+              <button>Sign Up</button>
+            </>
+          }
+          handleClose={togglePopup}
+        />
+      )}
+    </div>
+  )
 }
 
-export default Playlist 
+export default Playlist
