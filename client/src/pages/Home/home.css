@@ -1,10 +1,3 @@
-html {
-  background-color: #00010e;
-  /* background-image: url("https://i.imgur.com/5kUuaZr.png"); */
-  /* background-size: cover; */
-
-}
-
 #homeContainer {
   display: flex;
   flex-direction: column;

@@ -4,12 +4,12 @@
   padding: 5em;
   width: 5vw;
   height: 7vh;
-  background-color: #1C2851;
+  background-color: #293B74;
   border-radius: 0.5em;
   margin: 1em;
   justify-content: space-around;
-  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  /* -webkit-box-shadow: 5px 5px 5px 0px #dad6d6, inset 4px 4px 15px 0px #c5c4c4, 5px 5px 15px 5px rgba(245, 221, 221, 0);
+  box-shadow: 5px 5px 5px 0px #dad6d6, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0); */
   font-family: 'Georgia';
   cursor: pointer;
   font-size: 20px;
