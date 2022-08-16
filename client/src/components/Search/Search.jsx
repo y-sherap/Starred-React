@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import Song from '../Song/Song'
-
+import "./search.css"
 const Search = ({ user, playlists }) => {
   const [songs, setSongs] = useState([])
   const [search, setSearch] = useState()
@@ -55,6 +55,7 @@ const Search = ({ user, playlists }) => {
       >
         X
       </button>
+    
       {isSearch ? (
         <div id="searchResults">
           {songs.map((song) => (
