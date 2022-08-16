@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import Song from '../../components/Song/Song'
+import './playlistdetails.css'
+
 const PlaylistDetails = ({ user, authenticated }) => {
   const { name, id } = useParams()
   const [songs, setSongs] = useState([])
@@ -28,7 +30,7 @@ const PlaylistDetails = ({ user, authenticated }) => {
   return (
     <div id="playlistDetailsContainer">
       <h1 id="playlistName">{name}</h1>
-      <div id="songContainer">
+      <div className="songContainer">
       {songs.map((song, index) => (
         <div>
           <Song

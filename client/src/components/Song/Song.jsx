@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Client from '../../services/api'
+import './song.css'
+
 const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
   const [pickPlaylist, setPickPlaylist] = useState()
 
@@ -21,8 +23,11 @@ const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
     }
   }
   return (
-    <div className="song">
+    <div className= {inPlaylist ? "playlistSong" : "searchSong"}>
+      <div id="songImageDiv">
       {inPlaylist ? <img src={song.image} id="songImage"></img> : <span></span>}
+      </div>
+      
       {inPlaylist ? <p id="songTitle">{song.title} </p> : <p id="songSearchTitle">{song.name}</p>}
       {inPlaylist ? (
         <p id="songArtist">{song.artist}</p>
@@ -31,6 +36,7 @@ const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
       )}
       {inPlaylist ? (
         <p id="songDuration">{Math.floor(parseInt(song.duration / 60000))}</p>
+        
       ) : (
         <span></span>
       )}
