@@ -1,16 +1,16 @@
 import {Link} from 'react-router-dom'
+import "./nav.css"
 
 const Nav = () => {
     return(
         <header>
             <nav>
-                <div>
+                <div className='navbar'>
                     <Link to = '/'>Home</Link>
+                
                     <Link to = '/dashboard'>Playlists</Link>
-                </div>
-                <div>
-                    <Link to = "/register">Sign Up</Link>
                     <Link to = "/login">Log In</Link>
+                    <Link to = "/register">Sign Up</Link>
                 </div>            
             </nav>
         </header>

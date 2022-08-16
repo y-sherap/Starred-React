@@ -22,7 +22,7 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
             <img src = {playlist.image} alt = "playlist image" className="playlistImage"></img>
             <div>
                         {isEdit? <span></span>:<h3 onClick={() => goToPlaylist(playlist)} className="playlistName">{playlist.name}</h3>}
-                        {isEdit? <span></span>:<h5>{playlist.mood}</h5>}
+                        {isEdit? <span></span>:<h5 className="playlistMood">{playlist.mood}</h5>}
                         <div className="playlistCardUpdateForm">
                         {isHover  ? isEdit? 
                                 <div id="playlistUpdateFormFields">

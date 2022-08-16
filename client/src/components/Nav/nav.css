@@ -1,0 +1,11 @@
+.navbar {
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: white;
+  border: solid black;
+  padding: 1em;
+  min-height: 2em;
+  font-family: 'Georgia';
+  display: flex;
+}

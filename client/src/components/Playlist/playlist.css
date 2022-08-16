@@ -8,9 +8,22 @@
   border-radius: 0.5em;
   margin: 1em;
   justify-content: space-around;
-  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   font-family: 'Georgia';
   cursor: pointer;
   font-size: 20px;
+}
+
+.playlistImage {
+  max-height: 300vh;
+  max-width: 300vw;
+}
+
+.playlistName {
+  font-size: 3vh;
+}
+
+.playlistMood {
+  font-size: 2vh;
 }
