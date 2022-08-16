@@ -1,0 +1,16 @@
+#searchResults{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    z-index: 1000;
+    top: -10;
+    width: 100vw;
+    height: 30vw;
+    background-color: blue;
+    
+}
+#searchContainer{
+    position: relative;
+
+}

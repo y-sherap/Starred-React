@@ -3,6 +3,7 @@ import Playlist from '../../components/Playlist/Playlist'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
+import "./dashboard.css"
 const Dashboard = ({ user, authenticated }) => {
   const [playlists, setPlaylists] = useState([])
   const [name, setName] = useState('')
@@ -99,7 +100,7 @@ const Dashboard = ({ user, authenticated }) => {
     setPlaylists(tempArray)
   }
   return user && authenticated ? (
-    <div>
+    <div id='dashboard'>
       <div className="createPlaylistFormContainer">
         <h3 id="dashboardPageTitle">Create a Playlist</h3>
         <div className="createPlaylistForm">
@@ -131,7 +132,7 @@ const Dashboard = ({ user, authenticated }) => {
           </form>
         </div>
       </div>
-      <div>
+      <div id='searchBar'>
         <Search user={user} playlists={playlists} />
       </div>
       <div id="playlistContainer">
