@@ -3,14 +3,34 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
     z-index: 1000;
-    top: -10;
-    width: 100vw;
+    width: 60vw;
     height: 30vw;
     background-color: blue;
+    top: 21px
     
 }
 #searchContainer{
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+.searchSong{
+    width: 20vw;
+    height: 11vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.searchForm{
+    display: flex;
+}
+
+#searchSongArtist{
+    text-align: center;
+    
 }
