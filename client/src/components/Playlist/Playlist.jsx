@@ -18,18 +18,18 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
         setNewImg(e.target.value)
     }
     return(
-        <div className="playlistCard"  onMouseOver={() => updateHover(true,index)} onMouseOut = { () => updateHover(false,index)} >
-            {isEdit? <span></span>: <img src = {playlist.image} alt = "playlist image" className="playlistImage"></img>}
-            <div>
+        <div className="playlistCard"  onMouseOver={() => updateHover(true,index)} onMouseOut = { () => updateHover(false,index)}  >
+            {isEdit? <span></span>: <img src = {playlist.image} alt = "playlist image" className="playlistImage" ></img>}
+            <div className="innerPlaylist">
                         {isEdit? <span></span>:<h3 onClick={() => goToPlaylist(playlist)} className="playlistName">{playlist.name}</h3>}
                         {isEdit? <span></span>:<h5 className="playlistMood">{playlist.mood}</h5>}
                         <div className="playlistCardUpdateForm">
-                        {isHover  ? isEdit? 
+                            {isHover  ? isEdit? 
                                 <div id="playlistUpdateFormFields">
                                     <input type="text" placeholder="Playlist Name" onChange={(e) => nameHandler(e) }></input>
                                     <input type="text" placeholder="Playlist Mood" onChange={(e) => moodHandler(e)}></input>
                                     <input type="text" placeholder="Playlist Image" onChange={(e) => imgHandler(e)}></input>
-                                    <button onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
+                                    <button id= "savePlaylistUpdate" onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
                                 </div>
                                 :<button onClick={() => renderUpdate(index)} >Update</button> : <span></span>}
                             { isHover ? isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)} className="removeButton" >Remove</button> : <span></span>}

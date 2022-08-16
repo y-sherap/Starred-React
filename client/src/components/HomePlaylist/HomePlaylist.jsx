@@ -56,7 +56,7 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
       ) : (
         <span></span>
       )}
-      {isOpen && (
+      {isOpen ?(
         <Popup
           content={
               <div id="popup">
@@ -72,7 +72,7 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
           }
           handleClose={togglePopup}
         />
-      )}
+      ): <span></span>}
     </div>
   )
 }
