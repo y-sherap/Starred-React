@@ -17,6 +17,8 @@ const Dashboard = ({ user, authenticated }) => {
       image: image
     })
     setName('')
+    setMood('')
+    setImage('')
     let tempArray = [...playlists]
     let tempObj = { ...res.data }
     tempArray.push(tempObj)
@@ -100,40 +102,49 @@ const Dashboard = ({ user, authenticated }) => {
     setPlaylists(tempArray)
   }
   return user && authenticated ? (
-    <div id='dashboard'>
+  <div id='dashboard'>
+      <div id='searchBar'>
+        <Search user={user} playlists={playlists} />
+      </div>
+    <div id="dashboardContent">
       <div className="createPlaylistFormContainer">
         <h3 id="dashboardPageTitle">Create a Playlist</h3>
-        <div className="createPlaylistForm">
+        <div>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="name">
-              <input
-                type="text"
-                value={name}
-                onChange={changeName}
-                name={'name'}
-                placeholder={'Playlist'}
-              />
-              <input
-                type="text"
-                value={mood}
-                onChange={changeMood}
-                name={'mood'}
-                placeholder={'Which mood describes your playlist?'}
-              />
-              <input
-                type="text"
-                value={image}
-                onChange={changeImage}
-                name={'image'}
-                placeholder={'Paste an image url link for your playlist here'}
-              />
+            <div className="createPlaylistForm">
+              <div id = "playlistInner">
+                <div>
+                  <input className='playlistFromInput'
+                    type="text"
+                    value={name}
+                    onChange={changeName}
+                    name={'name'}
+                    placeholder={'Playlist'}
+                  />
+                </div>
+                <div>
+                  <input className='playlistFromInput'
+                  type="text"
+                    value={mood}
+                    onChange={changeMood}
+                    name={'mood'}
+                    placeholder={'Mood'}
+                  />
+                </div>
+                <div>
+                  <input className='playlistFromInput'
+                  type="text"
+                    value={image}
+                    onChange={changeImage}
+                    name={'image'}
+                    placeholder={'Add image URL'}
+                  />
+                </div>
+              </div>
               <button id="form-submit">Create Playlist</button>
             </div>
           </form>
         </div>
-      </div>
-      <div id='searchBar'>
-        <Search user={user} playlists={playlists} />
       </div>
       <div id="playlistContainer">
       {playlists.map((playlist, index) => (
@@ -153,6 +164,7 @@ const Dashboard = ({ user, authenticated }) => {
       ))}
       </div>
     </div>
+  </div>
   ) : (
     <div>
       <h1>Please sign in</h1>
