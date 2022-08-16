@@ -39,6 +39,7 @@ const Search = ({ user, playlists }) => {
     <div id="searchContainer">
       <input
         type="text"
+        placeholder='Add songs to playlist'
         onChange={(e) => setSearch(e.target.value)}
         onKeyUp={(e) => {
           if (e.keyCode === 13) {

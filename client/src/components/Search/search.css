@@ -34,3 +34,20 @@
     text-align: center;
     
 }
+#Search{
+    padding: 3%;
+}
+.removeButton{
+    padding: 3%;
+}
+.removeButton:hover{
+    background-color: red;
+    animation-name:removeButton;
+    animation-duration: 1s;
+    outline: none;
+}
+
+@keyframes removeButton{
+    0%   {background-color:#e6ebee;}
+    100% {background-color: red;}
+}
