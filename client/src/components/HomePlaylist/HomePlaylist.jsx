@@ -1,6 +1,7 @@
 import Popup from '../PopUp/PopUp'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './homeplaylist.css'
 
 const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
   let navigate = useNavigate()
@@ -9,6 +10,10 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
 
   const togglePopup = () => {
     setIsOpen(!isOpen)
+    var blur = document.getElementById('blur')
+    blur.classList.toggle('active')
+    var popup = document.getElementById('popup')
+    popup.classList.toggle('active')
   }
 
   const navigateRegister = () => {
@@ -19,8 +24,15 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
     navigate('/login')
   }
 
+  // function toggle(){
+  //   var blur = document.getElementById('blur')
+  //   blur.classList.toggle('active')
+  //   var popup = document.getElementById('popup')
+  //   popup.classList.toggle('active')
+  // }
+
   return (
-    <div>
+    <div class= "container" id="blur">
       {user ? (
         <img
           onMouseOver={() => updateHover(true, index)}
@@ -47,8 +59,7 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
       {isOpen ?(
         <Popup
           content={
-         
-              <div id="Popup content">
+              <div id="popup">
                 <div id="SignUp">
                   <h4>Join Starred to keep track of your favorite songs and playlists </h4>         
                     <button onClick={navigateRegister} className="popUpButtons">Sign Up</button>
@@ -58,7 +69,6 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
                     <button onClick={navigateLogin} className="popUpButtons">Sign In</button>
                 </div>
               </div>
-          
           }
           handleClose={togglePopup}
         />

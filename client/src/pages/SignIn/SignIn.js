@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { SignInUser } from '../../services/Auth'
 import { useNavigate } from 'react-router-dom'
+import './signin.css'
+
 const SignIn = ({ setUser, toggleAuthenticated }) => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
@@ -23,6 +25,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
       <div className="card-overlay centered">
         <form className="signInForm" onSubmit={handleSubmit}>
           <div className="input-wrapper">
+          <h3 id="signInTitle">Sign In</h3>
             <label htmlFor="email">Email</label>
             <input
               onChange={handleChange}
@@ -30,6 +33,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
               type="email"
               placeholder="example@example.com"
               value={formValues.email}
+              id="signInValues"
               required
             />
           </div>
@@ -40,10 +44,11 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
               type="password"
               name="password"
               value={formValues.password}
+              id="signInValues"
               required
             />
           </div>
-          <button disabled={!formValues.email || !formValues.password}>
+          <button id="signInButton" disabled={!formValues.email || !formValues.password}>
             Sign In
           </button>
         </form>
