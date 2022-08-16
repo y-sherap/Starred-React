@@ -1,0 +1,27 @@
+.signUpForm {
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  background-color: grey;
+  padding: 40px;
+  
+}
+
+input, #registerButton {
+  width : 500px;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  display: block;
+}
+
+#signUpTitle {
+  padding-bottom: 30px;
+}
+
+
+

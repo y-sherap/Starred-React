@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { RegisterUser } from '../../services/Auth'
 import { useNavigate } from 'react-router-dom'
+import './signup.css'
+
 const SignUp = () => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
@@ -34,10 +36,11 @@ const SignUp = () => {
   }
 
   return (
-    <div className="signin col">
+    <div className="signupCol">
       <div className="card-overlay centered">
         <form className="signUpForm" onSubmit={handleSubmit}>
           <div className="input-wrapper">
+            <h3 id="signUpTitle">Sign Up</h3>
             <label htmlFor="name">Name</label>
             <input
               onChange={handleChange}
@@ -53,7 +56,7 @@ const SignUp = () => {
             <input
               onChange={handleChange}
               name="email"
-              type="email"
+              type="text"
               placeholder="example@example.com"
               value={formValues.email}
               required
@@ -77,7 +80,7 @@ const SignUp = () => {
             <input
               onChange={handleChange}
               type="password"
-              name="password"
+              name="text"
               value={formValues.password}
               required
             />
@@ -86,13 +89,14 @@ const SignUp = () => {
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               onChange={handleChange}
-              type="password"
+              type="text"
               name="confirmPassword"
               value={formValues.confirmPassword}
               required
             />
           </div>
           <button
+            id="registerButton"
             disabled={
               !formValues.email ||
               (!formValues.password &&
