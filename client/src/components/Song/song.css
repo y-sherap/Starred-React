@@ -1,24 +1,33 @@
 .playlistSong {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  border: 2px solid black;
+  justify-content: space-between;
+  padding-right: 4vh;
+  border: .5px solid rgb(0, 0, 0);
   width: 60vw;
   color: white;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  margin-bottom: 1vh;
-  background-color: rgb(32, 111, 229);
-  -webkit-box-shadow: 5px 5px 5px 0px #f2eaea, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-/* box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0); */
+  background-color: #1C2851;
 } 
 
-
+.playlistSong:hover {
+  background-color: #374572;
+}
 
 #songImage {
-  width: 10vw;
-  height: 10vh;
+  width: 120px;
+  height: 120px;
   padding: 20px;
   align-items: flex-start;
 }
 
+#playlistName {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  text-align: center;
+}
+
+.removeButton {
+  float: right;
+
+}
