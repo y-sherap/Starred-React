@@ -108,8 +108,8 @@ const Dashboard = ({ user, authenticated }) => {
       </div>
     <div id="dashboardContent">
       <div className="createPlaylistFormContainer">
+        <div id = "Form">
         <h3 id="dashboardPageTitle">Create a Playlist</h3>
-        <div>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="createPlaylistForm">
               <div id = "playlistInner">
