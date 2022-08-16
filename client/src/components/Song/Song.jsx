@@ -26,16 +26,16 @@ const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
     <div className= {inPlaylist ? "playlistSong" : "searchSong"}>
       <div id="songImageDiv">
       {inPlaylist ? <img src={song.image} id="songImage"></img> : <span></span>}
-      </div>
-      
-      {inPlaylist ? <p id="songTitle">{song.title} </p> : <p id="songSearchTitle">{song.name}</p>}
+      </div>     
+      {inPlaylist ?       
+        <p id="songTitle">Title: {song.title} </p> : <p id="songSearchTitle">{song.name}</p>}
       {inPlaylist ? (
-        <p id="songArtist">{song.artist}</p>
+        <p id="songArtist">Artist: {song.artist}</p>
       ) : (
         <p id="songSearchArtist">{song.artists.items[0].profile.name}</p>
       )}
       {inPlaylist ? (
-        <p id="songDuration">{Math.floor(parseInt(song.duration / 60000))}</p>
+        <p id="songDuration">Duration: {Math.floor(parseInt(song.duration / 60000))}</p>
         
       ) : (
         <span></span>
