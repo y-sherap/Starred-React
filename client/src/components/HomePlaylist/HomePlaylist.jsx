@@ -32,7 +32,7 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
   // }
 
   return (
-    <div class= "container" id="blur">
+    <div class= "homePlaylistContainer" id="blur">
       {user ? (
         <img
           onMouseOver={() => updateHover(true, index)}
