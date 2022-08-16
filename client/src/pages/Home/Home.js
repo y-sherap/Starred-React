@@ -3,6 +3,8 @@ import HomePlaylist from '../../components/HomePlaylist/HomePlaylist'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import home from './home.css'
+
 const Home = ({ user, authenticated }) => {
   const [playlists, setPlaylists] = useState([])
   const navigate = useNavigate()
