@@ -48,6 +48,7 @@ const SignUp = () => {
               type="text"
               placeholder="John Smith"
               value={formValues.name}
+              id="signUpValues"
               required
             />
           </div>
@@ -59,6 +60,7 @@ const SignUp = () => {
               type="text"
               placeholder="example@example.com"
               value={formValues.email}
+              id="signUpValues"
               required
             />
           </div>
@@ -71,6 +73,7 @@ const SignUp = () => {
               type="text"
               placeholder=""
               value={formValues.username}
+              id="signUpValues"
               required
             />
           </div>
@@ -79,9 +82,10 @@ const SignUp = () => {
             <label htmlFor="password">Password</label>
             <input
               onChange={handleChange}
-              type="password"
-              name="text"
+              type="text"
+              name="password"
               value={formValues.password}
+              id="signUpValues"
               required
             />
           </div>
@@ -92,6 +96,7 @@ const SignUp = () => {
               type="text"
               name="confirmPassword"
               value={formValues.confirmPassword}
+              id="signUpValues"
               required
             />
           </div>
