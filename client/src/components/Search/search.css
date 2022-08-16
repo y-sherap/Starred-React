@@ -6,10 +6,9 @@
     align-items: center;
     z-index: 1000;
     width: 60vw;
-    height: 30vw;
+    height: 70vh;
     background-color: blue;
-    top: 21px
-    
+    top: 31px;
 }
 #searchContainer{
     position: relative;

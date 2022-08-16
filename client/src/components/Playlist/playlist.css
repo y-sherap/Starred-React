@@ -4,29 +4,66 @@
   padding: 5em;
   width: 5vw;
   height: 7vh;
-  background-color: #1C2851;
+  background-color: #293B74;
   border-radius: 0.5em;
   margin: 1em;
-  justify-content: space-around;
+  opacity: .98;
+  justify-content: center;
+  align-items: center;
   -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   font-family: 'Georgia';
-  cursor: pointer;
   font-size: 20px;
+}
+.playlistCard:hover{
+  opacity: 1;
+}
+.playlistName:hover{
+  cursor: pointer;
+  color: rgb(192, 191, 207);
+}
+.innerPlaylist{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .playlistImage {
-  max-height: 300vh;
-  max-width: 300vw;
+  height: auto;
+  width: 160px;
+  max-width: 160px;
+  border-radius: 2%;
+  opacity: .8;  
+
 }
 
 .playlistName {
   font-size: 3vh;
+  text-align: center;
 }
 
 .playlistMood {
   font-size: 2vh;
+  text-align: center;
 }
 .playlistCardUpdateForm{
+  position: relative;
+    display: flex;
+    justify-content: center;
+    width: 3vw;
+    height: 3vh;
+
+}
+#playlistUpdateFormFields{
+  width: 100%;
+  position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#savePlaylistUpdate{
+  width:7em
 }

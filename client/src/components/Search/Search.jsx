@@ -40,6 +40,7 @@ const Search = ({ user, playlists }) => {
       <input
         type="text"
         placeholder='Add songs to playlist'
+        value={search}
         onChange={(e) => setSearch(e.target.value)}
         onKeyUp={(e) => {
           if (e.keyCode === 13) {
@@ -52,6 +53,7 @@ const Search = ({ user, playlists }) => {
        className="removeButton"
         onClick={() => {
           setIsSearch(false)
+          setSearch('')
         }}
       >
         X
