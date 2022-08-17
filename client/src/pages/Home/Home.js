@@ -58,16 +58,22 @@ const Home = ({ user, authenticated }) => {
       setIsOpen(!isOpen)
       if(value){
       const playlistBlur = e.nativeEvent.path[4]
-      playlistBlur.classList.add("blur") 
       const titleBlur = e.nativeEvent.path[5].children.title
+      if(playlistBlur.classList.contains('blurRemove') && titleBlur.classList.contains('blurRemove')){
+        playlistBlur.classList.remove("blurRemove")
+        titleBlur.classList.remove("blurRemove")
+      }
+      playlistBlur.classList.add("blur")
       titleBlur.classList.add("blur") 
-      console.log(e)
     } else {
       const playlistBlur = e.nativeEvent.path[3].children.homePlaylistContainer
-      playlistBlur.classList.remove("blur")
       const titleBlur = e.nativeEvent.path[3].children.title
-      titleBlur.classList.remove("blur") 
-      console.log(e)
+      if(playlistBlur.classList.contains('blur') && titleBlur.classList.contains('blur')){
+        playlistBlur.classList.remove("blur")
+        titleBlur.classList.remove("blur")
+      }
+      playlistBlur.classList.add("blurRemove")
+      titleBlur.classList.add("blurRemove") 
     }
     }
   }
