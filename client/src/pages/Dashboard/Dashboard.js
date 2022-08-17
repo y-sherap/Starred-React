@@ -199,7 +199,7 @@ const Dashboard = ({ user, authenticated }) => {
                   />
                 </div>
                 <div>
-                <button id="form-submit">Create Playlist</button>
+                <button id="form-submit" disabled={!name}>Create Playlist</button>
                 </div>
               </div>
             </div>
