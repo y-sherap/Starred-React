@@ -7,7 +7,7 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user , togglePopu
 
 
   return (
-    <div className= "playlistCard" id="blur" onClick={() =>togglePopup()}>
+    <div className= "playlistCard" id="blur" onClick={(e) =>togglePopup(e, true)}>
       <div className="imageHolder">
         <img
           onMouseOver={() => updateHover(true, index)}

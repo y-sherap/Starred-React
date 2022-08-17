@@ -52,27 +52,38 @@ const Home = ({ user, authenticated }) => {
   }
 
 
-
-  const togglePopup = () => {
+  
+  const togglePopup = (e, value) => {
     if(!user){
-    setIsOpen(!isOpen)
-    var blur = document.getElementById('blur')
-    blur.classList.toggle('active')
-    var popup = document.getElementById('popup')
-    popup.classList.toggle('active')
+      setIsOpen(!isOpen)
+      if(value){
+      const playlistBlur = e.nativeEvent.path[4]
+      playlistBlur.classList.add("blur") 
+      const titleBlur = e.nativeEvent.path[5].children.title
+      titleBlur.classList.add("blur") 
+      console.log(e)
+    } else {
+      const playlistBlur = e.nativeEvent.path[3].children.homePlaylistContainer
+      playlistBlur.classList.remove("blur")
+      const titleBlur = e.nativeEvent.path[3].children.title
+      titleBlur.classList.remove("blur") 
+      console.log(e)
+    }
     }
   }
 
+  
+
   return (
-    <div className="homeContainer" id="blur">
-      <h1 id = "title">STARRED</h1>
+    <div className="homeContainer" >
+      <h1 id= "title" >STARRED</h1>
       {isOpen ?(
         <PopUp
           content={
               <div id="popup">
-                <span className="close-icon" onClick={togglePopup}>
-          x
-        </span>
+                <span className="close-icon" onClick={(e) => togglePopup(e, false)}>
+                x
+              </span>
                 <div id="SignUp">
                   <h4>Join Starred to keep track of your favorite songs and playlists </h4>         
                     <button onClick={navigateRegister} className="popUpButtons">Sign Up</button>
@@ -86,7 +97,7 @@ const Home = ({ user, authenticated }) => {
           handleClose={togglePopup}
         />
       ): <span></span>}
-    <div id="homePlaylistContainer">
+    <div id="homePlaylistContainer" >
       {playlists.map((playlist, index) => (
         <div>
           <HomePlaylist
