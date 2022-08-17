@@ -53,7 +53,7 @@
   border-bottom-right-radius: 0;
 }
 
-#updatePlaylistButton {
+.updatePlaylistButton {
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
@@ -73,7 +73,7 @@
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-#updatePlaylistButton:hover{
+.updatePlaylistButton:hover{
   animation: updatePlaylistButton .5s forwards;
   transform: translateY(-2px);
 }
