@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  position: relative;
 }
 
 .container#blur.active {
@@ -26,7 +26,7 @@
 }
 
 #popup {
-  position: fixed;
+  position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -37,6 +37,8 @@
   /* visibility: hidden; */
   /* opacity: 0; */
   transition: 0.5s;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
 
 }
 
