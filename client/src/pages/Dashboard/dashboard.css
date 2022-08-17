@@ -12,6 +12,10 @@
     width: 100vw;
     height: 100vh;
 }
+.blur{
+    filter: blur(20px);
+    pointer-events: none;
+}
 .createPlaylistFormContainer{
     position: relative;
     top: -22px;
