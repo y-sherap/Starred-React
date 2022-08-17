@@ -20,7 +20,7 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
     return(
         <div className="playlistCard"  onMouseOver={() => updateHover(true,index)} onMouseOut = { () => updateHover(false,index)}  >
             <div className="imageHolder">
-            {isEdit? <span></span>: <img src = {playlist.image} alt = "playlist image" className="playlistImage" ></img>}
+            {isEdit? <span></span>: <img src = {playlist.image} alt = " add playlist image" className="playlistImage" ></img>}
             </div>
             <div className="innerPlaylist">
                         {isEdit? <span></span>:<div onClick={() => goToPlaylist(playlist)} className="playlistName">{playlist.name}</div>}
