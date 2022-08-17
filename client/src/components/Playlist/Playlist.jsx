@@ -42,4 +42,3 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
 }
 
 export default Playlist 
-
