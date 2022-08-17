@@ -31,13 +31,19 @@
 
 #searchSongArtist{
     text-align: center;
-    
 }
 #Search{
-    padding: 3%;
+    /* padding-left: 30%;
+    padding-right: 30%;
+    padding-bottom: 5%;
+    padding-top: 5%; */
+    font-size: 20px;
 }
 .removeButton{
-    padding: 3%;
+    /* padding-right: 8%;
+    padding-left: 8%;
+    padding-bottom: 5%;
+    padding-top: 5%; */
 }
 .removeButton:hover{
     background-color: red;

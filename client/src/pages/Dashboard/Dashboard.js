@@ -1,5 +1,6 @@
 import Search from '../../components/Search/Search'
 import Playlist from '../../components/Playlist/Playlist'
+import PopUp from '../../components/PopUp/PopUp'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
@@ -60,7 +61,13 @@ const Dashboard = ({ user, authenticated }) => {
       console.error(e)
     }
   }
+  const navigateRegister = () => {
+    navigate('/register')
+  }
 
+  const navigateLogin = () => {
+    navigate('/login')
+  }
   const goToPlaylist = (playlist) => {
     navigate(`playlist/${playlist.id}/${playlist.name}`)
   }
@@ -167,7 +174,20 @@ const Dashboard = ({ user, authenticated }) => {
   </div>
   ) : (
     <div>
-      <h1>Please sign in</h1>
+              <PopUp
+          content={
+              <div id="popup">
+                <div id="SignUp">
+                  <h4>Join Starred to keep track of your favorite songs and playlists </h4>         
+                    <button onClick={navigateRegister} className="popUpButtons">Sign Up</button>
+                </div>
+                <div id="SignIn">
+                  <h4>Already have an account?</h4>
+                    <button onClick={navigateLogin} className="popUpButtons">Sign In</button>
+                </div>
+              </div>
+          }
+          />
     </div>
   )
 }
