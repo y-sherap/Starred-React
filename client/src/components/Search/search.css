@@ -6,8 +6,9 @@
     align-items: center;
     z-index: 1000;
     width: 60vw;
-    height: 70vh;
-    background-color: blue;
+    height: 50vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
     top: 31px;
 }
 #searchContainer{
@@ -30,10 +31,11 @@
 }
 .searchSong{
     width: 20vw;
-    height: 11vh;
+    height: 9vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    border-bottom: 2px solid black;
 
 }
 .searchForm{

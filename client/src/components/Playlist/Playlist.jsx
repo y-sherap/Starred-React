@@ -31,7 +31,7 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
                                     <input type="text" placeholder="Playlist Name" onChange={(e) => nameHandler(e) }></input>
                                     <input type="text" placeholder="Playlist Mood" onChange={(e) => moodHandler(e)}></input>
                                     <input type="text" placeholder="Playlist Image" onChange={(e) => imgHandler(e)}></input>
-                                    <button id= "savePlaylistUpdate" className="button" onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
+                                    <button id= "savePlaylistUpdate" onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
                                 </div>
                                 :<button onClick={() => renderUpdate(index)} >Update</button> : <span></span>}
                             { isHover ? isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)} className="removeButton" >Remove</button> : <span></span>}
