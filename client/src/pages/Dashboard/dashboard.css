@@ -13,8 +13,19 @@
     height: 100vh;
 }
 .blur{
-    filter: blur(20px);
     pointer-events: none;
+    animation: blurTime 1.0s forwards;
+}
+.blurRemove{
+    animation: removeBlur 1.0s forwards;
+}
+@keyframes removeBlur {
+    0% {filter: blur(20px);}
+    100% {filter: blur(0px);}
+}
+@keyframes blurTime {
+    0% {filter: blur(0px);}
+    100% {filter: blur(20px);}
 }
 .createPlaylistFormContainer{
     position: relative;

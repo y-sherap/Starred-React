@@ -138,11 +138,17 @@ const Dashboard = ({ user, authenticated }) => {
       .catch(function (error) {
         console.error(error)
       })
+      if(dashboard.classList.contains('blurRemove')){
+        dashboard.classList.remove('blurRemove')
+      }
       dashboard.classList.add('blur')
       setIsSearch(value)
     }else{
       setIsSearch(value)
-      dashboard.classList.remove('blur')
+      if(dashboard.classList.contains('blur')){
+        dashboard.classList.remove('blur')
+      }
+      dashboard.classList.add('blurRemove')
     }
   }
   return user && authenticated ? (
