@@ -1,6 +1,6 @@
 import Song from '../Song/Song'
 import "./search.css"
-const Search = ({ user, playlists,getSongs,songs,setSearch,search,isSearch,resultToggle}) => {
+const Search = ({ user, playlists,getSongs,songs,setSearch,search,isSearch}) => {
   return (
     <div id="searchContainer">
       <input
@@ -14,7 +14,7 @@ const Search = ({ user, playlists,getSongs,songs,setSearch,search,isSearch,resul
             getSongs(e,true)
           }
         }}
-        id="Search"      
+        id="Search"
       ></input>
       <button     
        id="removeButton"
@@ -25,11 +25,16 @@ const Search = ({ user, playlists,getSongs,songs,setSearch,search,isSearch,resul
       >
         X
       </button>
-        <div id="searchResults" className={resultToggle} >
+    
+      {isSearch ? (
+        <div id="searchResults">
           {songs.map((song) => (
             <Song song={song.data} inPlaylist={false} playlists={playlists} />
           ))}
         </div>
+      ) : (
+        <span></span>
+      )}
     </div>
   )
 }
