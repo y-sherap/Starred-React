@@ -32,13 +32,13 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
   // }
 
   return (
-    <div class= "container" id="blur">
+    <div class= "homePlaylistContainer" id="blur">
       {user ? (
         <img
           onMouseOver={() => updateHover(true, index)}
           src={playlist.image}
           alt="playlist image"
-          className="PlaylistImage"  
+          className="playlistImage"  
         />
       ) : (
         <img
@@ -46,12 +46,12 @@ const HomePlaylist = ({ playlist, index, updateHover, isHover, user }) => {
           src={playlist.image}
           alt="playlist image"
           onClick={togglePopup}
-          className="PlaylistImage"        />
+          className="playlistImage"        />
       )}
       {isHover ? (
         <div>
-          <h3>{playlist.name}</h3>
-          <h5>{playlist.mood}</h5>
+          <h3 className="playlistName">{playlist.name}</h3>
+          <h5 className="playlistMood">{playlist.mood}</h5>
         </div>
       ) : (
         <span></span>
