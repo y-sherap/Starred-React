@@ -40,13 +40,15 @@
 }
 
 .playlistName {
-  font-size: 3vh;
+  font-size: 2vh;
   text-align: center;
+  padding: 10px;
 }
 
 .playlistMood {
-  font-size: 2vh;
+  font-size: 1.5vh;
   text-align: center;
+  padding: 15px;
 }
 .playlistCardUpdateForm{
   position: relative;
