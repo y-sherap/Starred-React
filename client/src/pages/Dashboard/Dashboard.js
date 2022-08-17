@@ -182,7 +182,7 @@ const Dashboard = ({ user, authenticated }) => {
                     name={'mood'}
                     placeholder={'Mood'}
                     id="createPlaylistMood"
-
+                    maxlength="15"
                   />
                 </div>
                 <div>
