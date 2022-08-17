@@ -20,7 +20,7 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
     return(
         <div className="playlistCard"  onMouseOver={() => updateHover(true,index)} onMouseOut = { () => updateHover(false,index)}  >
             <div className="imageHolder">
-            {isEdit? <span></span>: <img src = {playlist.image} alt = "playlist image" className="playlistImage" ></img>}
+            {isEdit? <span></span>: <img src = {playlist.image} alt = " add playlist image" className="playlistImage" ></img>}
             </div>
             <div className="innerPlaylist">
                         {isEdit? <span></span>:<div onClick={() => goToPlaylist(playlist)} className="playlistName">{playlist.name}</div>}
@@ -31,9 +31,9 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
                                     <input type="text" placeholder="Playlist Name" onChange={(e) => nameHandler(e) }></input>
                                     <input type="text" placeholder="Playlist Mood" onChange={(e) => moodHandler(e)}></input>
                                     <input type="text" placeholder="Playlist Image" onChange={(e) => imgHandler(e)}></input>
-                                    <button id= "savePlaylistUpdate" onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
+                                    <button className="updatePlaylistButton" onClick={() => updatePlaylist(playlist,index,newName,newMood,newImg)}>Save Update</button>
                                 </div>
-                                :<button onClick={() => renderUpdate(index)} id="updatePlaylistButton">Update</button> : <span></span>}
+                                :<button onClick={() => renderUpdate(index)} className="updatePlaylistButton">Update</button> : <span></span>}
                             { isHover ? isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)} id="removePlaylistButton" >Remove</button> : <span></span>}
                         </div>
                     </div>
@@ -42,4 +42,3 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
 }
 
 export default Playlist 
-
