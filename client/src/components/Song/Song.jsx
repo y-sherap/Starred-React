@@ -31,14 +31,19 @@ const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
       <div className='playlistSongHeader'> 
         <p>Title</p>
         <p id="songTitle">{song.title} </p>
-        </div> : <p id="songSearchTitle">{song.name}</p>}
+        </div> : (
+                  <div id="searchInfo">
+                    <p id="songSearchTitle">Title:{song.name}</p>
+                    <p id="songSearchArtist">Artist: {song.artists.items[0].profile.name}</p>
+                  </div>
+                  )}
       {inPlaylist ? (
         <div className='playlistSongHeader'> 
           <p>Artist</p>
           <p id="songArtist">{song.artist}</p>
         </div>
       ) : (
-        <p id="songSearchArtist">{song.artists.items[0].profile.name}</p>
+        <span></span>
       )}
       {inPlaylist ? (
         <div className='playlistSongHeader'>

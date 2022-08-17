@@ -17,12 +17,23 @@
     align-items: center;
 
 }
+#searchInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#songSearchTitle{
+    text-align: center;
+}
+#songSearchArtist{
+    text-align: center;
+}
 .searchSong{
     width: 20vw;
     height: 11vh;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-around;
 
 }
 .searchForm{
@@ -45,12 +56,12 @@
     padding-bottom: 5%;
     padding-top: 5%; */
 }
-.removeButton:hover{
+/* .removeButton:hover{
     background-color: red;
     animation-name:removeButton;
     animation-duration: 1s;
     outline: none;
-}
+} */
 
 @keyframes removeButton{
     0%   {background-color:#e6ebee;}
