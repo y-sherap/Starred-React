@@ -1,9 +1,8 @@
 .playlistCard {
   display: flex;
   flex-direction: column;
-  padding: 5em;
-  width: 5vw;
-  height: 7vh;
+  width: 18vw;
+  height: 30vh;
   background-color: #293B74;
   border-radius: 0.5em;
   margin: 1em;
@@ -14,6 +13,7 @@
   box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   font-family: 'Georgia';
   font-size: 20px;
+  
 }
 .playlistCard:hover{
   opacity: 1;
@@ -23,30 +23,32 @@
   color: rgb(192, 191, 207);
 }
 .innerPlaylist{
+  width: 5vw;
+  height: 7vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .playlistImage {
-  height: auto;
-  width: 100%;
-  max-width: 160px;
+  padding-top: 30px;
+  height: 250px;
+  width: 250px;
   border-radius: 2%;
   opacity: .8;  
 }
 
 .playlistName {
+  word-wrap: break-word;
   font-size: 2vh;
   text-align: center;
-  padding: 10px;
 }
 
 .playlistMood {
   font-size: 1.5vh;
   text-align: center;
-  padding: 15px;
 }
 
 .playlistCardUpdateForm{
