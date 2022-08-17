@@ -13,6 +13,7 @@ const Dashboard = ({ user, authenticated }) => {
   const [image, setImage] = useState('')
   const [songs, setSongs] = useState([])
   const [search, setSearch] = useState()
+  const [resultToggle,setResultToggle] = useState('')
   const [isSearch, setIsSearch] = useState(false)
   const options = {
     method: 'GET',
@@ -141,6 +142,7 @@ const Dashboard = ({ user, authenticated }) => {
       if(dashboard.classList.contains('blurRemove')){
         dashboard.classList.remove('blurRemove')
       }
+      setResultToggle('moveDown')
       dashboard.classList.add('blur')
       setIsSearch(value)
     }else{
@@ -148,13 +150,14 @@ const Dashboard = ({ user, authenticated }) => {
       if(dashboard.classList.contains('blur')){
         dashboard.classList.remove('blur')
       }
+      setResultToggle('moveUp')
       dashboard.classList.add('blurRemove')
     }
   }
   return user && authenticated ? (
   <div id='dashboard'>
       <div id='searchBar'>
-        <Search user={user} playlists={playlists} getSongs={getSongs} songs={songs} setSearch={setSearch} search={search} isSearch={isSearch} setIsSearch={setIsSearch}/>
+        <Search  resultToggle={resultToggle} user={user} playlists={playlists} getSongs={getSongs} songs={songs} setSearch={setSearch} search={search} isSearch={isSearch} setIsSearch={setIsSearch}/>
       </div>
     <div id="dashboardContent">
       <div className="createPlaylistFormContainer">
@@ -196,7 +199,7 @@ const Dashboard = ({ user, authenticated }) => {
                   />
                 </div>
                 <div>
-                <button id="form-submit">Create Playlist</button>
+                <button id="form-submit" disabled={!name}>Create Playlist</button>
                 </div>
               </div>
             </div>
