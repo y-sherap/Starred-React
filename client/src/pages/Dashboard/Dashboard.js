@@ -127,6 +127,8 @@ const Dashboard = ({ user, authenticated }) => {
                     onChange={changeName}
                     name={'name'}
                     placeholder={'Playlist'}
+                    id="createPlaylistName"
+                    maxlength="15"
                   />
                 </div>
                 <div>
@@ -136,6 +138,8 @@ const Dashboard = ({ user, authenticated }) => {
                     onChange={changeMood}
                     name={'mood'}
                     placeholder={'Mood'}
+                    id="createPlaylistMood"
+
                   />
                 </div>
                 <div>
@@ -145,10 +149,13 @@ const Dashboard = ({ user, authenticated }) => {
                     onChange={changeImage}
                     name={'image'}
                     placeholder={'Add image URL'}
+                    id="createPlaylistImage"
                   />
                 </div>
+                <div>
+                <button id="form-submit">Create Playlist</button>
+                </div>
               </div>
-              <button id="form-submit">Create Playlist</button>
             </div>
           </form>
         </div>
