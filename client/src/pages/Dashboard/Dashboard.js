@@ -5,11 +5,30 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import "./dashboard.css"
+import axios from 'axios'
 const Dashboard = ({ user, authenticated }) => {
   const [playlists, setPlaylists] = useState([])
   const [name, setName] = useState('')
   const [mood, setMood] = useState('')
   const [image, setImage] = useState('')
+  const [songs, setSongs] = useState([])
+  const [search, setSearch] = useState()
+  const [isSearch, setIsSearch] = useState(false)
+  const options = {
+    method: 'GET',
+    url: 'https://spotify23.p.rapidapi.com/search/',
+    params: {
+      q: `${search}`,
+      type: 'tracks',
+      offset: '0',
+      limit: '10',
+      numberOfTopResults: '5'
+    },
+    headers: {
+      'X-RapidAPI-Key': '303d72b48fmsh678a2284baa6cd2p10546ajsn372ba29a7be4',
+      'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+    }
+  }
   const navigate = useNavigate()
   const createPlaylist = async (e) => {
     const res = await Client.post(`/playlist/${user.id}`, {
@@ -108,10 +127,28 @@ const Dashboard = ({ user, authenticated }) => {
     tempArray.splice(index, 1, tempObj)
     setPlaylists(tempArray)
   }
+  const getSongs = async (e,value) => {
+    let dashboard = e.nativeEvent.path[3].children.dashboardContent
+    if(value){
+    await axios
+      .request(options)
+      .then(function (response) {
+        setSongs(response.data.tracks.items)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+      dashboard.classList.add('blur')
+      setIsSearch(value)
+    }else{
+      setIsSearch(value)
+      dashboard.classList.remove('blur')
+    }
+  }
   return user && authenticated ? (
   <div id='dashboard'>
       <div id='searchBar'>
-        <Search user={user} playlists={playlists} />
+        <Search user={user} playlists={playlists} getSongs={getSongs} songs={songs} setSearch={setSearch} search={search} isSearch={isSearch} setIsSearch={setIsSearch}/>
       </div>
     <div id="dashboardContent">
       <div className="createPlaylistFormContainer">
