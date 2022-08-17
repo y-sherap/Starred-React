@@ -49,6 +49,8 @@ const Home = ({ user, authenticated }) => {
 
   return (
     <div id="homeContainer">
+      <h1 id = "title">STARRED</h1>
+    <div id="homePlaylistContainer">
       {playlists.map((playlist, index) => (
         <div>
           <HomePlaylist
@@ -61,6 +63,7 @@ const Home = ({ user, authenticated }) => {
           />
         </div>
       ))}
+    </div>
     </div>
   )
 }
