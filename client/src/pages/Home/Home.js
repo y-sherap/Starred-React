@@ -51,13 +51,7 @@ const Home = ({ user, authenticated }) => {
     setPlaylists(tempArray)
   }
 
-  const updateHover = (value, index) => {
-    let tempArray = [...playlists]
-    let tempObj = playlists[index]
-    tempObj.isHover = value
-    tempArray.splice(index, 1, tempObj)
-    setPlaylists(tempArray)
-  }
+
 
   const togglePopup = () => {
     if(!user){
@@ -100,7 +94,6 @@ const Home = ({ user, authenticated }) => {
             index={index}
             isHover={playlist.isHover}
             renderPlaylists={renderPlaylists}
-            updateHover={updateHover}
             user={user}
             togglePopup={togglePopup}
           />

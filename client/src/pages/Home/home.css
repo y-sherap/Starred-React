@@ -1,6 +1,6 @@
 #homePlaylistContainer {
   display: flex;
-  flex-direction: flex;
+  flex-wrap: wrap;
   height: 100vh;
   width: 100vw;
 }
