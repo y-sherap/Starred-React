@@ -55,7 +55,7 @@ const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
         <span></span>
       )}
       {inPlaylist ? (
-        <button onClick={() => removeSong(song.id, index)} className="removeButton">Remove</button>
+        <button onClick={() => removeSong(song.id, index)} id='removePlaylistButton'>Remove</button>
       ) : (
         <form onSubmit={(e) => handleSubmit(e)} className="searchForm">
           <select
