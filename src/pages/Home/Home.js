@@ -137,6 +137,7 @@ const Home = ({ user, authenticated }) => {
             addNewPlaylist={addNewPlaylist}
             isUser={playlist.isUser}
             goToPlaylist={goToPlaylist}
+            user={user}
           />
         </div>
       ))}

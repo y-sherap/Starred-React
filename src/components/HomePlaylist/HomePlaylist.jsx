@@ -1,6 +1,6 @@
 import './homeplaylist.css'
 
-const HomePlaylist = ({ playlist, index,togglePopup,addNewPlaylist,isUser,goToPlaylist}) => {
+const HomePlaylist = ({ playlist,user,index,togglePopup,addNewPlaylist,isUser,goToPlaylist}) => {
   return (
     <div className= "playlistCard" id="blur" onClick={(e) =>togglePopup(e, true)}>
       <div className="imageHolder">
@@ -11,7 +11,7 @@ const HomePlaylist = ({ playlist, index,togglePopup,addNewPlaylist,isUser,goToPl
         />
     </div>
         <div className='innerPlaylist'>
-          <h3 className="playlistName" onClick={() => goToPlaylist(playlist.id,playlist.name,isUser)}>{playlist.name}</h3>
+          <h3 className="playlistName" onClick={user? () => goToPlaylist(playlist.id,playlist.name,isUser):() => {}}>{playlist.name}</h3>
           <h5 className="playlistMood">{playlist.mood}</h5>
         </div>
 
