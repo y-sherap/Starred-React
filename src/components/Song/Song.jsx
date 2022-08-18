@@ -2,15 +2,14 @@ import { useState } from 'react'
 import Client from '../../services/api'
 import './song.css'
 
-const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
+const Song = ({ song, playlists, removeSong, inPlaylist, index,ogUser}) => {
   const [pickPlaylist, setPickPlaylist] = useState()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log(pickPlaylist)
       if (pickPlaylist) {
-        let res = await Client.post(`/song/${pickPlaylist}`, {
+         await Client.post(`/song/${pickPlaylist}`, {
           title: song.name,
           artist: song.artists.items[0].profile.name,
           duration: song.duration.totalMilliseconds,
@@ -54,7 +53,8 @@ const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
       ) : (
         <span></span>
       )}
-      {inPlaylist ? (
+
+      {ogUser ? inPlaylist ?(
         <button onClick={() => removeSong(song.id, index)} id='removePlaylistButton'>Remove</button>
       ) : (
         <form onSubmit={(e) => handleSubmit(e)} className="searchForm">
@@ -69,7 +69,7 @@ const Song = ({ song, playlists, removeSong, inPlaylist, index }) => {
           </select>
           <button type="submit">Add</button>
         </form>
-      )}
+      ): <span></span>}
     </div>
   )
 }

@@ -8,28 +8,60 @@ import PopUp from "../../components/PopUp/PopUp"
 
 const Home = ({ user, authenticated }) => {
   const [playlists, setPlaylists] = useState([])
+  const [isOpen, setIsOpen] = useState(false)
   const navigate = useNavigate()
 
   const renderPlaylists = async () => {
     try {
       let temp = []
-      const res = await axios.get(`https://starred-backend.herokuapp.com/playlist/all`)
+      const res = await axios.get(`http://localhost:3001/playlist/all`)
+    if(user){
+      const res2= await Client.get(`/friends/following/${user.id}`)
       const playlistArr = res.data
-      playlistArr.forEach((playlist) => {
-        let tempObj = { ...playlist, isEdit: false, isHover: false }
+      const followingArr = res2.data[0].follower
+      playlistArr.forEach((playlist) =>{
+        let thisUser = false
+        followingArr.forEach((following)=>{
+            if(following.id === playlist.id){
+              thisUser = true
+            }
+        })
+        if(playlist.userId === user.id){
+          thisUser = true
+        }
+        let tempObj = { ...playlist, isEdit: false, isHover: false,isUser:thisUser}
         temp.push(tempObj)
       })
+    }else{
+      const playlistArr = res.data
+      playlistArr.forEach((playlist) => {
+        let tempObj = { ...playlist, isEdit: false, isHover: false, isUser:true}
+        temp.push(tempObj)
+      })
+    }
       setPlaylists(temp)
     } catch (e) {
       console.error(e)
     }
   }
+  const addNewPlaylist = async(id,index) =>{
+    try{
+      await Client.post(`/friends/followingPlaylist`,{
+        userId: user.id,
+        playlistId: id
+      })
+    }catch(e){
+      console.error(e)
+    }
+    let tempArray = [...playlists]
+    let tempObj = playlists[index]
+    tempObj.isUser = true
+    tempArray.splice(index, 1, tempObj)
+    setPlaylists(tempArray)
+  }
   
-  const [isOpen, setIsOpen] = useState(false)
-
-
-  const goToPlaylist = (playlist) => {
-    navigate(`playlist/${playlist.id}/${playlist.name}`)
+  const goToPlaylist = (id,name,ogUser) => {
+    navigate(`dashboard/playlist/${id}/${name}/${ogUser}`)
   }
 
   const navigateRegister = () => {
@@ -41,18 +73,10 @@ const Home = ({ user, authenticated }) => {
   }
 
   useEffect(() => {
-    renderPlaylists()
-  }, [])
-  const renderUpdate = (index) => {
-    let tempArray = [...playlists]
-    let tempObj = playlists[index]
-    tempObj.isEdit = true
-    tempArray.splice(index, 1, tempObj)
-    setPlaylists(tempArray)
-  }
+      renderPlaylists()
+  }, [user])
 
 
-  
   const togglePopup = (e, value) => {
     if(!user){
       setIsOpen(!isOpen)
@@ -109,10 +133,10 @@ const Home = ({ user, authenticated }) => {
           <HomePlaylist
             playlist={playlist}
             index={index}
-            isHover={playlist.isHover}
-            renderPlaylists={renderPlaylists}
-            user={user}
             togglePopup={togglePopup}
+            addNewPlaylist={addNewPlaylist}
+            isUser={playlist.isUser}
+            goToPlaylist={goToPlaylist}
           />
         </div>
       ))}

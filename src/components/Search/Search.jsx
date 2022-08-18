@@ -29,7 +29,7 @@ const Search = ({ user, playlists,getSongs,songs,setSearch,search,isSearch}) => 
       {isSearch ? (
         <div id="searchResults">
           {songs.map((song) => (
-            <Song song={song.data} inPlaylist={false} playlists={playlists} />
+            <Song song={song.data} inPlaylist={false} playlists={playlists} ogUser={true} />
           ))}
         </div>
       ) : (

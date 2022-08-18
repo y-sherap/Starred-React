@@ -3,7 +3,7 @@ import { useState } from "react"
 import './playlist.css'
 
 
-const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goToPlaylist,renderUpdate,isHover,isEdit}) => {
+const Playlist = ({playlist,index,updatePlaylist,removePlaylist,removeFollowingPlaylist,updateHover,goToPlaylist,renderUpdate,isHover,isEdit,ogUser}) => {
     const [newName,setNewName] = useState()
     const [newMood,setNewMood] = useState()
     const [newImg,setNewImg] = useState()
@@ -20,7 +20,7 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
     return(
         <div className="playlistCard"  onMouseOver={() => updateHover(true,index)} onMouseOut = { () => updateHover(false,index)}  >
             <div className="imageHolder">
-            {isEdit? <span></span>: <img src = {playlist.image} alt = " add playlist image" className="playlistImage" ></img>}
+            {isEdit? <span></span>: <img src = {playlist.image} alt = "add playlist image" className="playlistImage" ></img>}
             </div>
             <div className="innerPlaylist">
                         {isEdit? <span></span>:<div onClick={() => goToPlaylist(playlist)} className="playlistName">{playlist.name}</div>}
@@ -36,8 +36,8 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,updateHover,goTo
                                 :<span></span> : <span></span>}
             </div>
                         <div id="playlistButtons">
-                            {isHover ? isEdit? <span></span>:<button onClick={() => renderUpdate(index)} className="updatePlaylistButton">Update</button> : <span></span>}
-                            {isHover ? isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)} id="removePlaylistButton" >Remove</button> : <span></span>}
+                            { ogUser ? isHover ? isEdit? <span></span>:<button onClick={() => renderUpdate(index)} className="updatePlaylistButton">Update</button> : <span></span> : <button id="removePlaylistButton" onClick={() => removeFollowingPlaylist(playlist.id,index)}>Remove from Following</button>}
+                            { ogUser ? isHover ? isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)} id="removePlaylistButton" >Remove</button> : <span></span> : <span></span>}
                         </div>
                     </div>
         </div>

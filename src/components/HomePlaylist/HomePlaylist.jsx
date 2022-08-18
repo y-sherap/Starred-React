@@ -1,28 +1,23 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './homeplaylist.css'
 
-const HomePlaylist = ({ playlist, index, updateHover, isHover, user , togglePopup}) => {
-  let navigate = useNavigate()
-
-
+const HomePlaylist = ({ playlist, index,togglePopup,addNewPlaylist,isUser,goToPlaylist}) => {
   return (
     <div className= "playlistCard" id="blur" onClick={(e) =>togglePopup(e, true)}>
       <div className="imageHolder">
         <img
-          onMouseOver={() => updateHover(true, index)}
           src={playlist.image}
           alt="playlist image"
           className="playlistImage"  
         />
     </div>
-      
         <div className='innerPlaylist'>
-          <h3 className="playlistName">{playlist.name}</h3>
+          <h3 className="playlistName" onClick={() => goToPlaylist(playlist.id,playlist.name,isUser)}>{playlist.name}</h3>
           <h5 className="playlistMood">{playlist.mood}</h5>
         </div>
-        
-      
+
+        <div>
+          { isUser ? <span></span>:<button className='updatePlaylistButton' onClick={() => addNewPlaylist(playlist.id,index)}>Add Playlist</button>}
+        </div>
     </div>
   )
 }

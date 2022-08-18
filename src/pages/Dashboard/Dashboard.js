@@ -8,6 +8,7 @@ import "./dashboard.css"
 import axios from 'axios'
 const Dashboard = ({ user, authenticated }) => {
   const [playlists, setPlaylists] = useState([])
+  const [usersPlaylists,setUsersPlaylists] = useState([])
   const [name, setName] = useState('')
   const [mood, setMood] = useState('')
   const [image, setImage] = useState('')
@@ -40,7 +41,7 @@ const Dashboard = ({ user, authenticated }) => {
     setMood('')
     setImage('')
     let tempArray = [...playlists]
-    let tempObj = { ...res.data }
+    let tempObj = { ...res.data,isEdit: false, isHover: false,ogUser:true }
     tempArray.push(tempObj)
     setPlaylists(tempArray)
   }
@@ -66,16 +67,32 @@ const Dashboard = ({ user, authenticated }) => {
     tempArray.splice(index, 1)
     setPlaylists(tempArray)
   }
+  const removeFollowingPlaylist = async (id,index) =>{
+    await Client.delete(`friends/${user.id}/${id}`)
+    let tempArray = [...playlists]
+    tempArray.splice(index, 1)
+    setPlaylists(tempArray)
+  }
   const renderPlaylists = async () => {
     try {
-      let temp = []
+      let usersArr = [];
+      let notUsersArr = []
+      let finalArr = []
       const res = await Client.get(`/playlist/${user.id}`)
+      const res2= await Client.get(`/friends/following/${user.id}`)
       const playlistArr = res.data
-      playlistArr.forEach((playlist) => {
-        let tempObj = { ...playlist, isEdit: false, isHover: false }
-        temp.push(tempObj)
+      const followingArr = res2.data[0].follower
+      playlistArr.forEach((playlist) =>{
+        let tempObj = { ...playlist, isEdit: false, isHover: false,ogUser:true}
+        usersArr.push(tempObj)
       })
-      setPlaylists(temp)
+      followingArr.forEach((following) =>{
+        let tempObj = { ...following, isEdit: false, isHover: false,ogUser:false}
+        notUsersArr.push(tempObj)
+      })
+      finalArr.push(...usersArr,...notUsersArr)
+      setUsersPlaylists(playlistArr)
+      setPlaylists(finalArr)
     } catch (e) {
       console.error(e)
     }
@@ -88,7 +105,7 @@ const Dashboard = ({ user, authenticated }) => {
     navigate('/login')
   }
   const goToPlaylist = (playlist) => {
-    navigate(`playlist/${playlist.id}/${playlist.name}`)
+    navigate(`playlist/${playlist.id}/${playlist.name}/${playlist.ogUser}`)
   }
 
   const updatePlaylist = (playlist, index, newName, newMood, newImg) => {
@@ -154,7 +171,7 @@ const Dashboard = ({ user, authenticated }) => {
   return user && authenticated ? (
   <div id='dashboard'>
       <div id='searchBar'>
-        <Search user={user} playlists={playlists} getSongs={getSongs} songs={songs} setSearch={setSearch} search={search} isSearch={isSearch} setIsSearch={setIsSearch}/>
+        <Search user={user} playlists={usersPlaylists} getSongs={getSongs} songs={songs} setSearch={setSearch} search={search} isSearch={isSearch} setIsSearch={setIsSearch}/>
       </div>
     <div id="dashboardContent">
       <div className="createPlaylistFormContainer">
@@ -215,7 +232,9 @@ const Dashboard = ({ user, authenticated }) => {
             updatePlaylist={updatePlaylist}
             updateHover={updateHover}
             removePlaylist={removePlaylist}
+            removeFollowingPlaylist={removeFollowingPlaylist}
             goToPlaylist={goToPlaylist}
+            ogUser={playlist.ogUser}
           />
         </div>
       ))}

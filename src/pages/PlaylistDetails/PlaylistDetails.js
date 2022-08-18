@@ -1,25 +1,28 @@
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import Song from '../../components/Song/Song'
 import './playlistdetails.css'
 
 const PlaylistDetails = ({ user, authenticated }) => {
-  const { name, id } = useParams()
+  const { name, id, ogUser } = useParams()
   const [songs, setSongs] = useState([])
-  const [playlist, setPlaylist] = useState()
+  const [myUser,setMyUser] = useState()
   const renderSongs = async () => {
     const res = await Client.get(`/song/${id}`)
     setSongs(res.data)
-    setPlaylist(res.data[0].Playlist)
+    if(ogUser === 'true'){
+      setMyUser(true)
+    }else{
+      setMyUser(false)
+    }
   }
   useEffect(() => {
     renderSongs()
   }, [])
   const removeSong = async (id, index) => {
     try {
-      const res = Client.delete(`/song/${id}`)
+      Client.delete(`/song/${id}`)
       let tempArray = [...songs]
       tempArray.splice(index, 1)
       setSongs(tempArray)
@@ -38,6 +41,7 @@ const PlaylistDetails = ({ user, authenticated }) => {
             index={index}
             inPlaylist={true}
             removeSong={removeSong}
+            ogUser={myUser}
           />
         </div>       
       ))}
