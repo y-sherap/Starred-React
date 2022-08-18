@@ -108,7 +108,9 @@ const Dashboard = ({ user, authenticated }) => {
     navigate(`playlist/${playlist.id}/${playlist.name}/${playlist.ogUser}`)
   }
 
-  const updatePlaylist = (playlist, index, newName, newMood, newImg) => {
+  const updatePlaylist = (id, index, newName, newMood, newImg) => {
+    const res = Client.put(`/playlist/${id}`,{name:newName,mood:newMood,image:newImg})
+    console.log(res)
     let tempArray = [...playlists]
     let tempObj = playlists[index]
     if (newName) {
@@ -118,7 +120,7 @@ const Dashboard = ({ user, authenticated }) => {
       tempObj.mood = newMood
     }
     if (newImg) {
-      tempObj.newImg = newImg
+      tempObj.image = newImg
     }
     tempObj.isEdit = false
     tempArray.splice(index, 1, tempObj)
