@@ -44,12 +44,12 @@ This application is built for users interested in discovering new music.
 
 #### **Entity Relationship Diagram**
 
-![ERD](public/ERD_Project3.png)
+![ERD](assets/ERD_Project3.png)
 
 
 #### **Component Hierarchy Diagram**
 
-![CHD](public/CHD_Project3.png)
+![CHD](assets/CHD_Project3.png)
 
 
 ---
