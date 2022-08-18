@@ -13,7 +13,7 @@ const Home = ({ user, authenticated }) => {
   const renderPlaylists = async () => {
     try {
       let temp = []
-      const res = await axios.get(`http://localhost:3001/playlist/all`)
+      const res = await axios.get(`https://starred-backend.herokuapp.com/playlist/all`)
       const playlistArr = res.data
       playlistArr.forEach((playlist) => {
         let tempObj = { ...playlist, isEdit: false, isHover: false }
