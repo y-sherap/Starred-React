@@ -1,4 +1,4 @@
-# Starred: a music app
+<!-- # Starred: a music app
 ## Date: 08/10/2022
 #### By: Luke Robinson, Will Fitzgerald, Yangtsel Sherap
 
@@ -140,4 +140,4 @@ This application is built for users interested in discovering new music.
 - Heroku
 - Miro
 
----
+--- -->
