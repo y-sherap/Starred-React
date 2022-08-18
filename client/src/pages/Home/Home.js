@@ -3,7 +3,7 @@ import HomePlaylist from '../../components/HomePlaylist/HomePlaylist'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import home from './home.css'
+import './home.css'
 import PopUp from "../../components/PopUp/PopUp"
 
 const Home = ({ user, authenticated }) => {
