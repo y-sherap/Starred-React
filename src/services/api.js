@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-export const BASE_URL = 'https://starred-react.herokuapp.com/3001'
+export const BASE_URL = 'https://starred-react.herokuapp.com/'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
