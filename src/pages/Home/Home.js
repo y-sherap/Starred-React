@@ -14,7 +14,7 @@ const Home = ({ user, authenticated }) => {
   const renderPlaylists = async () => {
     try {
       let temp = []
-      const res = await axios.get(`http://localhost:3001/playlist/all`)
+      const res = await axios.get(`https://starred-react.herokuapp.com/playlist/all`)
     if(user){
       const res2= await Client.get(`/friends/following/${user.id}`)
       const playlistArr = res.data
