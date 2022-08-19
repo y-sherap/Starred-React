@@ -1,82 +1,8 @@
-<!-- # Starred: a music app
-## Date: 08/10/2022
-#### By: Luke Robinson, Will Fitzgerald, Yangtsel Sherap
-
-**[Website]() | [GitHub](https://github.com/y-sherap/Starred-React)**
-
-
-
----
-![Header](https://repository-images.githubusercontent.com/248812720/56902700-c5bd-11ea-813f-ed8631377258)
----
-
-#### *Description*
-
-A ==PERN== application that allows users to:
-* create an account to create and save playlists
-* add songs to a playlist 
-* perform full CRUD applications on their playlists
-* search for songs through a 3rd party API to add to their playlist
-
-
-View the project [HERE](LINK HERE)
-
-***
-#### *Technologies Used*
-* Sequelize
-* React JS
-* Express
-* Node.JS
-* PostGres
-* Github
-* Deezer
-
-***
-
-#### _Project Overview_
-This application is built for users interested in discovering new music.
-
-
----
-
-### **_Screenshots_**
-
-
-#### **Entity Relationship Diagram**
-
-![ERD](assets/ERD_Project3.png)
-
-
-#### **Component Hierarchy Diagram**
-
-![CHD](assets/CHD_Project3.png)
-
-
----
-
-#### _Future Updates_
-
-- [ ] Create a social media feed that allows users to share playlists they created
-- [ ] Allow users to save playlists (implementing the Many-to-many model)
-- [ ] Friends model
-
----
-
-#### **_Resources_**
-
-- Draw.io
-- Heroku
-- Miro
-
----
-
-
 # Starred: a music app
 ## Date: 08/10/2022
 #### By: Luke Robinson, Will Fitzgerald, Yangtsel Sherap
 
-**[Website]() | [GitHub](https://github.com/y-sherap/Starred-Backend)**
-
+**[Website](https://starred-react.herokuapp.com/) | [Backend GitHub](https://github.com/y-sherap/Starred-backend)**
 
 ---
 ![Header](https://repository-images.githubusercontent.com/248812720/56902700-c5bd-11ea-813f-ed8631377258)
@@ -85,15 +11,14 @@ This application is built for users interested in discovering new music.
 #### *Description*
 
 A PERN application that allows users to:
-* create an account to create and save playlists
-* add songs to a playlist 
-* perform full CRUD applications on their playlists
+* create an account 
+* create playlists
 * search for songs through a 3rd party API to add to their playlist
-
-
-View the project [HERE](LINK HERE)
+* perform full CRUD applications on their playlists
+* follow any playlists created by other users
 
 ***
+
 #### *Technologies Used*
 * Sequelize
 * React JS
@@ -102,6 +27,7 @@ View the project [HERE](LINK HERE)
 * PostGres
 * Github
 * Deezer
+* JWT
 
 ***
 
@@ -109,28 +35,35 @@ View the project [HERE](LINK HERE)
 This application is built for users interested in discovering new music.
 
 
+
+
+
 ---
 
 ### **_Screenshots_**
 
+![HOME](https://cdn.discordapp.com/attachments/365559021916389376/1010190249625927720/Screen_Shot_2022-08-19_at_10.13.33.png)
+
+![SIGNUP](https://cdn.discordapp.com/attachments/365559021916389376/1010190250179563661/Screen_Shot_2022-08-19_at_10.13.48.png)
+
+![PLAYLIST](https://cdn.discordapp.com/attachments/365559021916389376/1010190254222876702/Screen_Shot_2022-08-19_at_10.14.45.png)
+
 
 #### **Entity Relationship Diagram**
 
-![ERD](public/ERD_Project3.png)
+![ERD](https://cdn.discordapp.com/attachments/365559021916389376/1010191017930137680/Starred-ERD.png)
 
 
 #### **Component Hierarchy Diagram**
 
-![CHD](public/CHD_Project3.png)
+![CHD](https://cdn.discordapp.com/attachments/365559021916389376/1010191017447800872/Starred-CHD.png)
 
 
 ---
 
 #### _Future Updates_
 
-- [ ] Create a social media feed that allows users to share playlists they created
-- [ ] Allow users to save playlists (implementing the Many-to-many model)
-- [ ] Friends model
+- [X] Allow users to follow playlists created by other users (implementing the Many-to-many model)
 
 ---
 
@@ -139,5 +72,4 @@ This application is built for users interested in discovering new music.
 - Draw.io
 - Heroku
 - Miro
-
---- -->
+- Spotify
