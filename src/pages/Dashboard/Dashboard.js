@@ -15,6 +15,11 @@ const Dashboard = ({ user, authenticated }) => {
   const [songs, setSongs] = useState([])
   const [search, setSearch] = useState()
   const [isSearch, setIsSearch] = useState(false)
+  const [post,setPost] = useState(false)
+  const [isImage,setIsImage] = useState(false)
+  const  checkImage = (url) =>{
+    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+  }
   const options = {
     method: 'GET',
     url: 'https://spotify23.p.rapidapi.com/search/',
@@ -32,22 +37,29 @@ const Dashboard = ({ user, authenticated }) => {
   }
   const navigate = useNavigate()
   const createPlaylist = async (e) => {
-    const res = await Client.post(`/playlist/${user.id}`, {
-      name: name,
-      mood: mood,
-      image: image
-    })
-    setName('')
-    setMood('')
-    setImage('')
-    let tempArray = [...playlists]
-    let tempObj = { ...res.data,isEdit: false, isHover: false,ogUser:true }
-    tempArray.push(tempObj)
-    setPlaylists(tempArray)
+      if(name && isImage){
+      const res = await Client.post(`/playlist/${user.id}`, {
+        name: name,
+        mood: mood,
+        image: image
+      })
+      setName('')
+      setMood('')
+      setImage('')
+      let tempArray = [...playlists]
+      let tempObj = { ...res.data,isEdit: false, isHover: false,ogUser:true }
+      tempArray.push(tempObj)
+      setPlaylists(tempArray)
+      setIsImage(false)
+      setPost(false)
+  }
   }
   const changeName = (event) => {
     let n = event.target.value
     setName(n)
+    if(name && image){
+      setPost(true)
+    }
   }
   const changeMood = (event) => {
     let n = event.target.value
@@ -56,6 +68,10 @@ const Dashboard = ({ user, authenticated }) => {
   const changeImage = (event) => {
     let n = event.target.value
     setImage(n)
+    if(name && image){
+      setPost(true)
+    }
+    if(checkImage(n)){setIsImage(true)}
   }
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -191,6 +207,7 @@ const Dashboard = ({ user, authenticated }) => {
                     placeholder={'Playlist'}
                     id="createPlaylistName"
                     maxlength="15"
+                    required
                   />
                 </div>
                 <div>
@@ -212,10 +229,11 @@ const Dashboard = ({ user, authenticated }) => {
                     name={'image'}
                     placeholder={'Add image URL'}
                     id="createPlaylistImage"
+                    required
                   />
                 </div>
                 <div>
-                <button id="form-submit" disabled={!name}>Create Playlist</button>
+                <button id="form-submit">Create Playlist</button>
                 </div>
               </div>
             </div>
