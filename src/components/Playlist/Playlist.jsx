@@ -36,7 +36,7 @@ const Playlist = ({playlist,index,updatePlaylist,removePlaylist,removeFollowingP
                                 :<span></span> : <span></span>}
             </div>
                         <div id="playlistButtons">
-                            { ogUser ? isHover ? isEdit? <span></span>:<button onClick={() => renderUpdate(index)} className="updatePlaylistButton">Update</button> : <span></span> : <button id="removePlaylistButton" onClick={() => removeFollowingPlaylist(playlist.id,index)}>Remove from Following</button>}
+                            { isHover ? ogUser ? isEdit? <span></span>:<button onClick={() => renderUpdate(index)} className="updatePlaylistButton">Update</button> :  <button id="removePlaylistButton" onClick={() => removeFollowingPlaylist(playlist.id,index)}>Remove from Following</button>: <span></span>}
                             { ogUser ? isHover ? isEdit? <span></span>:<button onClick={() => removePlaylist(playlist.id,index)} id="removePlaylistButton" >Remove</button> : <span></span> : <span></span>}
                         </div>
                     </div>
